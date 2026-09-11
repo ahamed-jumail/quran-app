@@ -1,0 +1,13 @@
+{
+    "global_exclude": [
+      "lib/**/models/**",
+      "lib/**/generated/**",
+      "lib/**/router/**",
+      "lib/**/go_router.dart",
+      "lib/core/theme/**",
+      "lib/**/config/**",
+      "lib/**/constants/**",
+      "lib/main.dart"
+    ]
+  }
+  

@@ -1,0 +1,128 @@
+pr:
+  branches:
+    include:
+      - develop # 👈 target branch for PRs
+  autoCancel: true
+
+trigger: none
+
+pool:
+  name: mobile-self-hosted
+
+variables:
+  PUB_CACHE: $(Pipeline.Workspace)/.pub-cache
+
+jobs:
+- job: android_ci_vuka          # 👈 internal job id (no spaces), update according to project name
+  displayName: "Android CI Vuka" # 👈 shown in UI,update according to project name
+
+  steps:
+  # ================================
+  # Checkout
+  # ================================
+  - checkout: self
+    fetchDepth: 0
+    clean: true
+    persistCredentials: true
+
+  # ================================
+  # 0. Count PR Changed Files
+  # ================================
+  - script: |
+      git fetch origin $(System.PullRequest.TargetBranch)
+      FILE_COUNT=$(git diff --name-only FETCH_HEAD HEAD | wc -l)
+      echo "Changed files: $FILE_COUNT"
+      echo "##vso[task.setvariable variable=FILE_COUNT]$FILE_COUNT"
+    displayName: "Count PR Changed Files"
+    condition: eq(variables['Build.Reason'], 'PullRequest')
+
+  # ================================
+  # 0c. Comment if > 15 files
+  # ================================
+  - script: |
+      if [ $(FILE_COUNT) -gt 15 ]; then
+        COMMENT=$(printf '{"comments":[{"parentCommentId":0,"content":"🚫 **PR Rejected: Too Many Changed Files**\n\nThis PR includes **%s** files.\nMax allowed: **15**","commentType":1}]}' "$(FILE_COUNT)")
+
+        curl -X POST \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer $(System.AccessToken)" \
+          --data "$COMMENT" \
+          "$(System.CollectionUri)$(System.TeamProjectId)/_apis/git/repositories/$(Build.Repository.ID)/pullRequests/$(System.PullRequest.PullRequestId)/threads?api-version=7.1-preview.1"
+      fi
+    displayName: "Post PR File Limit Comment"
+    condition: eq(variables['Build.Reason'], 'PullRequest')
+    env:
+      System.AccessToken: $(System.AccessToken)
+
+  # ================================
+  # Flutter
+  # ================================
+  - script: flutter --version
+    displayName: "Verify Flutter Installation"
+
+  - script: flutter pub get
+    displayName: "Flutter Pub Get"
+
+  - script: flutter analyze
+    displayName: "Flutter Analyze"
+
+  - script: |
+      flutter test --coverage || true
+      [ -s coverage/lcov.info ] || echo "" > coverage/lcov.info
+    displayName: "Flutter Test with Coverage"
+
+  # ================================
+  # Coverage
+  # ================================
+  - script: |
+      EXCLUDE_ARGS=""
+      for pattern in $(jq -r '.global_exclude[]' coverage_exclude.json); do
+        EXCLUDE_ARGS="$EXCLUDE_ARGS \"$pattern\""
+      done
+      eval "lcov --ignore-errors unused --remove coverage/lcov.info $EXCLUDE_ARGS -o coverage/lcov.info"
+    displayName: "Filter Coverage"
+
+  - script: |
+      pip install --user lcov_cobertura
+      lcov_cobertura coverage/lcov.info --output coverage/cobertura.xml || true
+      genhtml --ignore-errors empty coverage/lcov.info --output-directory coverage/html || true
+    displayName: "Generate Coverage Reports"
+
+  - task: PublishCodeCoverageResults@2
+    displayName: "Publish Code Coverage"
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: coverage/cobertura.xml
+      reportDirectory: coverage/html
+      failIfCoverageEmpty: false
+
+  - script: |
+      COVERAGE=$(lcov --summary coverage/lcov.info | grep "lines" | awk '{print $2}')
+      echo "##vso[task.setvariable variable=TOTAL_COVERAGE]${COVERAGE:-0.0%}"
+    displayName: "Extract Coverage Percentage"
+
+  - script: |
+      MIN=60
+      RAW="$(TOTAL_COVERAGE)"
+      VALUE=${RAW%\%}
+
+      if (( ${VALUE%.*} < MIN )); then
+        STATUS="🔴 FAILED"
+      else
+        STATUS="🟢 PASSED"
+      fi
+
+      COMMENT="{\"comments\":[{\"parentCommentId\":0,
+      \"content\":\"🧪 **Flutter Coverage Report**\n\nCoverage: **$(TOTAL_COVERAGE)** ${STATUS}\nTarget: ${MIN}%\",
+      \"commentType\":1}]}"
+
+      curl -X POST \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $(System.AccessToken)" \
+        --data "$COMMENT" \
+        "$(System.CollectionUri)$(System.TeamProjectId)/_apis/git/repositories/$(Build.Repository.ID)/pullRequests/$(System.PullRequest.PullRequestId)/threads?api-version=7.1-preview.1"
+    displayName: "Post Coverage PR Comment"
+    condition: eq(variables['Build.Reason'], 'PullRequest')
+    env:
+      System.AccessToken: $(System.AccessToken)
+
