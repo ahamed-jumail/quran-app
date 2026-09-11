@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/api_model.dart';
 import '../config/app_config.dart';
 import '../preference_client/preference_client.dart';
-import '../utils/firebase_utils.dart';
+import '../utils/test_environment.dart';
 import 'interceptors/api_logging_interceptor.dart';
 class ApiRepository {
   static String baseUrlConfig = AppConfig.shared.baseUrl;
@@ -64,7 +64,7 @@ class ApiRepository {
             ),
           )
         ..interceptors.addAll(<Interceptor>[
-          if (!FirebaseUtils.isFlutterTest) ApiLoggingInterceptor(),
+          if (!TestEnvironment.isFlutterTest) ApiLoggingInterceptor(),
         ]),
       diowithoutBaseUrl: Dio(
         BaseOptions(

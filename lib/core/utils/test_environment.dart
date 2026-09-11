@@ -1,5 +1,5 @@
 import 'dart:io';
 
-class FirebaseUtils {
+class TestEnvironment {
   static bool isFlutterTest = Platform.environment.containsKey('FLUTTER_TEST');
 }

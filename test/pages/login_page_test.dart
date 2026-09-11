@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_bp/core/bloc/app_bloc/app_bloc.dart';
-import 'package:flutter_bloc_bp/core/bloc/auth_bloc/auth_bloc.dart';
-import 'package:flutter_bloc_bp/views/auth/login_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nested/nested.dart';
+import 'package:quran_app/core/bloc/app_bloc/app_bloc.dart';
+import 'package:quran_app/core/bloc/auth_bloc/auth_bloc.dart';
+import 'package:quran_app/views/auth/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../test_helpers/test_app.dart';

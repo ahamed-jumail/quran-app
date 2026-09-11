@@ -406,7 +406,6 @@ WebSocket BLoC Features:
 - Multiple state types for different scenarios
 - Automatic message and status stream subscription
 - Resource cleanup on dispose
-- Integration with Firebase analytics/crashlytics (via BaseBloc)
 - Type-safe event and state management
 - Easy integration with Flutter UI
 

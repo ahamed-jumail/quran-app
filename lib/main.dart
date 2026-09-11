@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,20 +20,17 @@ Future<void> main() async {
 
       await ApiRepository.init();
 
-      await Firebase.initializeApp();
-      // ✅ Enable / Disable Crashlytics by build mode
-      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
-        !kDebugMode,
-      );
-
       // ✅ Flutter framework errors
       FlutterError.onError = (FlutterErrorDetails details) {
-        FirebaseCrashlytics.instance.recordFlutterFatalError(details);
+        FlutterError.presentError(details);
+        if (kDebugMode) {
+          debugPrint('FlutterError: ${details.exceptionAsString()}');
+        }
       };
 
       // ✅ Async & platform errors
       PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
-        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+        debugPrint('PlatformDispatcher error: $error\n$stack');
         return true;
       };
       runApp(
@@ -49,7 +44,7 @@ Future<void> main() async {
       );
     },
     (Object error, StackTrace stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      debugPrint('Uncaught zone error: $error\n$stack');
     },
   );
 }

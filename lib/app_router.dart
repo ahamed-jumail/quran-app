@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,9 +6,6 @@ import 'views/auth/login_page.dart';
 import 'views/home/home_page.dart';
 import 'views/loader/app_loader.dart';
 
-class FirebaseUtils {
-  static bool isFlutterTest = Platform.environment.containsKey('FLUTTER_TEST');
-}
 class RouteConstants {
   static String initPage = 'init';
   static String appLoaderPage = 'appLoader';
@@ -30,8 +24,6 @@ class GoRouterInit {
     debugLogDiagnostics: true,
     observers: <NavigatorObserver>[
       GoRouterInit.routeObserver,
-      if (!FirebaseUtils.isFlutterTest)
-        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     ],
     initialLocation: initialLocation,
     initialExtra: initialExtra,

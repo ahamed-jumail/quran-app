@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_bp/app.dart';
-import 'package:flutter_bloc_bp/app_router.dart';
-import 'package:flutter_bloc_bp/core/api_repository/api_repository.dart';
-import 'package:flutter_bloc_bp/core/config/app_config.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:nested/nested.dart';
 import 'package:network_image_mock/network_image_mock.dart';
+import 'package:quran_app/app.dart';
+import 'package:quran_app/app_router.dart';
+import 'package:quran_app/core/api_repository/api_repository.dart';
+import 'package:quran_app/core/config/app_config.dart';
+
 import 'test_class_helper.dart';
 
 extension PumpRouteX on WidgetTester {
@@ -39,7 +40,7 @@ extension PumpRouteX on WidgetTester {
     late MockPathProvider pathProvider;
     late MockHiveCacheStore hiveCacheStore;
     TestWidgetsFlutterBinding.ensureInitialized();
-    AppConfig.fromFlavor(Flavor.dev);
+    AppConfig.forTest();
 
     // SharedPreferences.setMockInitialValues(<String, Object>{
     //   ApiEndpoint.tokenKey: '{"accessToken": "mock_accessToken"}'

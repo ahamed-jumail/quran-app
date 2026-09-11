@@ -1,13 +1,11 @@
 import 'dart:async';
 
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:network_flutter/networking/custom_exception.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../utils/firebase_utils.dart';
+import '../utils/test_environment.dart';
 import 'constraints.dart';
 
 abstract class BaseBloc<E, S extends ErrorState> extends Bloc<E, S> {
@@ -72,18 +70,9 @@ abstract class BaseBloc<E, S extends ErrorState> extends Bloc<E, S> {
             );
           }
         } else {
-          if (!FirebaseUtils.isFlutterTest) {
-            FirebaseAnalytics.instance.logEvent(
-              name: 'api_error',
-              parameters: <String, Object>{
-                'message': 'Check',
-                'value': '${apiError.message} ${apiError.code}',
-              },
-            );
-            FirebaseCrashlytics.instance.recordError(
-              '${apiError.message} ${apiError.code}',
-              null,
-              reason: 'api-error-with-catch',
+          if (!TestEnvironment.isFlutterTest) {
+            debugPrint(
+              'api_error: ${apiError.message} ${apiError.code}',
             );
           }
           emit(
@@ -105,19 +94,8 @@ abstract class BaseBloc<E, S extends ErrorState> extends Bloc<E, S> {
       }
     } catch (err, stackTrace) {
       debugPrint('///////////////$stackTrace');
-      if (!FirebaseUtils.isFlutterTest) {
-        FirebaseAnalytics.instance.logEvent(
-          name: 'api_error',
-          parameters: <String, Object>{
-            'message': 'Check',
-            'value': '$err',
-          },
-        );
-        FirebaseCrashlytics.instance.recordError(
-          err,
-          stackTrace,
-          reason: 'api-error-with-catch',
-        );
+      if (!TestEnvironment.isFlutterTest) {
+        debugPrint('api_error: $err');
       }
       debugPrint('============ eventHandler catch block: $err');
       emit(
