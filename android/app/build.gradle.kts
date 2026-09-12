@@ -9,7 +9,7 @@ plugins {
 }
 
 extensions.configure<ApplicationExtension> {
-    namespace = "com.example.flutter_bloc_bp"
+    namespace = "com.quran.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -23,15 +23,14 @@ extensions.configure<ApplicationExtension> {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.flutter_bloc_bp"
+        applicationId = "com.quran.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        resValue(type = "string", name = "app_name", value = "BP")
+        resValue(type = "string", name = "app_name", value = "Qurania")
     }
 
     buildTypes {

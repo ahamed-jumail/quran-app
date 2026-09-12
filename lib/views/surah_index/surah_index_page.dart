@@ -184,6 +184,19 @@ class _SearchField extends StatelessWidget {
             color: AppColors.gold.withValues(alpha: 0.7),
             size: 20.r,
           ),
+          suffixIcon: controller.text.isEmpty
+              ? null
+              : IconButton(
+                  icon: Icon(
+                    Icons.close_rounded,
+                    color: AppColors.gold.withValues(alpha: 0.7),
+                    size: 18.r,
+                  ),
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                  splashRadius: 18.r,
+                  onPressed: controller.clear,
+                ),
         ),
         onTapOutside: (PointerDownEvent event) {
           FocusScope.of(context).unfocus();
