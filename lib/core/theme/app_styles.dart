@@ -7,6 +7,13 @@ const String displayFont = 'Fraunces';
 const String bodyFont = 'Manrope';
 
 extension CustomTextTheme on TextTheme {
+
+  TextStyle get fraunces16SemiBold => TextStyle(
+    fontFamily: displayFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+  );
+
   TextStyle get fraunces18SemiBold => TextStyle(
     fontFamily: displayFont,
     fontSize: 18.sp,
