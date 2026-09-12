@@ -51,7 +51,12 @@ Matrix4 _clampToFirstReadablePage(
 }
 
 class QuranReaderPage extends StatefulWidget {
-  const QuranReaderPage({super.key});
+  const QuranReaderPage({super.key, this.initialPage});
+
+  /// Jumps straight to this page (e.g. a Surah's starting page) instead of
+  /// resuming from the last saved reading position. Once the user reads on
+  /// from there, that becomes their new saved progress as usual.
+  final int? initialPage;
 
   @override
   State<QuranReaderPage> createState() => _QuranReaderPageState();
@@ -79,7 +84,7 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
   void initState() {
     super.initState();
     _progressCubit = context.read<QuranProgressCubit>();
-    _initialPage = _progressCubit.state.lastPage;
+    _initialPage = widget.initialPage ?? _progressCubit.state.lastPage;
 
     _controller = PdfViewerController()..addListener(_handleScroll);
 
