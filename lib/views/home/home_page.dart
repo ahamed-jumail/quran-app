@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../core/bloc/quran_progress/quran_progress_cubit.dart';
+import '../../core/bloc/quran_progress/quran_progress_state.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
@@ -37,10 +41,21 @@ class HomePage extends StatelessWidget {
               SizedBox(height: isCompactHeight ? AppSpacing.sm : AppSpacing.md),
               SizedBox(
                 height: isCompactHeight ? 170.h : 200.h,
-                child: QuranProgressCard(
-                  title: 'Continue your journey',
-                  subtitle: 'Begin reading the Holy Quran',
-                  onTap: () {},
+                child: BlocBuilder<QuranProgressCubit, QuranProgressState>(
+                  builder: (BuildContext context, QuranProgressState state) {
+                    final bool hasProgress =
+                        state.lastPage > QuranProgressState.firstReadablePage &&
+                        state.totalPages > 0;
+                    return QuranProgressCard(
+                      title: 'Continue your journey',
+                      subtitle: hasProgress
+                          ? 'Page ${state.lastPage} of ${state.totalPages}'
+                          : 'Begin reading the Holy Quran',
+                      progress: state.progress,
+                      progressLabel: hasProgress ? '${(state.progress * 100).round()}%' : 'Begin',
+                      onTap: () => context.push('/quran-reader'),
+                    );
+                  },
                 ),
               ),
               SizedBox(height: isCompactHeight ? AppSpacing.sm : 30.h),

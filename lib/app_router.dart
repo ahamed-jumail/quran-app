@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'views/home/home_page.dart';
+import 'views/quran_reader/color_codes_page.dart';
+import 'views/quran_reader/quran_reader_page.dart';
 
 class RouteConstants {
   static String homePage = 'home';
+  static String quranReaderPage = 'quranReader';
+  static String colorCodesPage = 'colorCodes';
 }
 
 class GoRouterInit {
@@ -29,6 +33,22 @@ class GoRouterInit {
         pageBuilder: (BuildContext context, GoRouterState state) =>
             const MaterialPage<HomePage>(
           child: HomePage(),
+        ),
+      ),
+      GoRoute(
+        path: '/quran-reader',
+        name: RouteConstants.quranReaderPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<QuranReaderPage>(
+          child: QuranReaderPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/color-codes',
+        name: RouteConstants.colorCodesPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<ColorCodesPage>(
+          child: ColorCodesPage(),
         ),
       ),
     ],

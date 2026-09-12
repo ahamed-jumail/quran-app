@@ -11,11 +11,15 @@ class QuranProgressCard extends StatelessWidget {
     required this.title,
     required this.subtitle,
     this.onTap,
+    this.progress = 0.0,
+    this.progressLabel = 'Begin',
   });
 
   final String title;
   final String subtitle;
   final VoidCallback? onTap;
+  final double progress;
+  final String progressLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +205,7 @@ class QuranProgressCard extends StatelessWidget {
                               ),
                               child: FractionallySizedBox(
                                 alignment: Alignment.centerLeft,
-                                widthFactor: 0.0,
+                                widthFactor: progress.clamp(0.0, 1.0),
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: AppColors.surfaceOverlay,
@@ -213,7 +217,7 @@ class QuranProgressCard extends StatelessWidget {
                           ),
                           SizedBox(width: AppSpacing.sm),
                           Text(
-                            'Begin',
+                            progressLabel,
                             style: textTheme.manrope10Medium.copyWith(
                               color: AppColors.surfaceOverlay.withValues(
                                 alpha: 0.72,

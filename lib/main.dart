@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nested/nested.dart';
 
@@ -9,6 +10,7 @@ import 'app.dart';
 import 'core/api_repository/api_repository.dart';
 import 'core/bloc/app_bloc/app_bloc.dart';
 import 'core/bloc/auth_bloc/auth_bloc.dart';
+import 'core/bloc/quran_progress/quran_progress_cubit.dart';
 import 'core/config/app_config.dart';
 
 Future<void> main() async {
@@ -17,6 +19,10 @@ Future<void> main() async {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
       AppConfig.initiate();
+
+      await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+        DeviceOrientation.portraitUp,
+      ]);
 
       await ApiRepository.init();
 
@@ -38,6 +44,7 @@ Future<void> main() async {
           providers: <SingleChildWidget>[
             BlocProvider<AuthBloc>(create: (_) => AuthBloc()),
             BlocProvider<AppBloc>(create: (_) => AppBloc()),
+            BlocProvider<QuranProgressCubit>(create: (_) => QuranProgressCubit()),
           ],
           child: const App(),
         ),
