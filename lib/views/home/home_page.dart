@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
                               icon: Icons.layers_rounded,
                               label: 'Juz Index',
                               subtitle: '30 Juz',
-                              onTap: () {},
+                              onTap: () => context.push('/juz-index'),
                             ),
                           ),
                         ],

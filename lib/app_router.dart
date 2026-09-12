@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'core/bloc/surah_interactions/surah_interactions_state.dart';
 import 'models/surah_index_entry.dart';
 import 'views/home/home_page.dart';
+import 'views/juz_index/juz_index_page.dart';
 import 'views/quran_reader/color_codes_page.dart';
 import 'views/quran_reader/quran_reader_page.dart';
 import 'views/surah_index/surah_collection_page.dart';
@@ -18,6 +19,7 @@ class RouteConstants {
   static String surahInfoPage = 'surahInfo';
   static String likedSurahsPage = 'likedSurahs';
   static String bookmarkedSurahsPage = 'bookmarkedSurahs';
+  static String juzIndexPage = 'juzIndex';
 }
 
 class GoRouterInit {
@@ -98,6 +100,14 @@ class GoRouterInit {
             emptyMessage: 'No bookmarked Surahs yet',
             numbersSelector: (SurahInteractionsState s) => s.bookmarkedNumbers,
           ),
+        ),
+      ),
+      GoRoute(
+        path: '/juz-index',
+        name: RouteConstants.juzIndexPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<JuzIndexPage>(
+          child: JuzIndexPage(),
         ),
       ),
     ],
