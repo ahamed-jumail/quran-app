@@ -1,116 +1,458 @@
 {
-    "Al-Fatiha": 4,
-    "Al-Baqarah": 5,
-    "Ale-Imran": 70,
-    "An-Nisa": 108,
-    "Al-Ma'idah": 149,
-    "Al-An'am": 179,
-    "Al-Ar'af": 211,
-    "Al-Anfal": 248,
-    "At-Tawbah": 262,
-    "Yunus": 290,
-    "Hud": 310,
-    "Yusuf": 330,
-    "Ar-Rad": 348,
-    "Ibrahim": 357,
-    "Al-Hijr": 366,
-    "An-Nahl": 374,
-    "Bani Israel": 395,
-    "Al-Kahf": 410,
-    "Maryam": 427,
-    "Ta Ha": 437,
-    "Al-Anbiya": 451,
-    "Al-Hajj": 464,
-    "Al-Mu'minun": 479,
-    "An-Nur": 489,
-    "Al-Furqan": 503,
-    "Ash-Shuara": 513,
-    "An-Naml": 527,
-    "Al-Qasas": 539,
-    "Al-Ankabut": 554,
-    "Ar-Rum": 564,
-    "Luqman": 573,
-    "As-Sajdah": 579,
-    "Al-Ahzab": 583,
-    "Saba": 597,
-    "Fatir": 605,
-    "Ya Seen": 613,
-    "As-Saffat": 620,
-    "Saad": 630,
-    "Az-Zumar": 637,
-    "Ghafir or Al-Mumin": 649,
-    "Fussilat or Ha Meem As-Sajdah": 661,
-    "Ash-Shu'ra": 670,
-    "Az-Zukhruf": 679,
-    "Ad-Dukhan": 688,
-    "Al-Jathiya": 693,
-    "Al-Ahqaf": 699,
-    "Muhammad": 706,
-    "Al-Fath": 712,
-    "Al-Hujurat": 718,
-    "Qaf": 723,
-    "Adh-Dhariyat": 727,
-    "At-Tur": 731,
-    "An-Najm": 734,
-    "Al-Qamar": 738,
-    "Ar-Rahman": 742,
-    "Al-Waqiah": 747,
-    "Al-Hadeed": 752,
-    "Al-Mujadalah": 759,
-    "Al-Hashr": 763,
-    "Al-Mumtahanah": 768,
-    "As-Saff": 772,
-    "Al-Jumu'ah": 775,
-    "Al-Munafiqun": 777,
-    "At-Taghabun": 779,
-    "At-Talaq": 782,
-    "At-Tahrim": 785,
-    "Al-Mulk": 789,
-    "Al-Qalam": 792,
-    "Al-Haqqah": 796,
-    "Al-Ma'rij": 799,
-    "Nuh": 802,
-    "Al-Jinn": 805,
-    "Al-Muzzammil": 808,
-    "Al-Muddaththir": 810,
-    "Al-Qiyamah": 813,
-    "Ad-Dahr or Al-Insan": 815,
-    "Al-Mursalat": 818,
-    "An-Naba": 821,
-    "An-Naziat": 822,
-    "Abasa": 824,
-    "At-Takwir": 826,
-    "Al-Infitar": 827,
-    "Al-Mutaffifeen": 828,
-    "Al-Inshiqaq": 830,
-    "Al-Buruj": 831,
-    "At-Tariq": 832,
-    "Al-Ala": 833,
-    "Al-Ghashiyah": 834,
-    "Al-Fajr": 835,
-    "Al-Balad": 837,
-    "Ash-Shams": 838,
-    "Al-Layl": 839,
-    "Ad-Duha": 840,
-    "Ash-Sharh": 840,
-    "At-Teen": 841,
-    "Al-Alaq": 841,
-    "Al-Qadr": 842,
-    "Al-Bayyinah": 842,
-    "Az-Zilzal": 843,
-    "Al-Adiyat": 844,
-    "Al-Qari'ah": 845,
-    "At-Takathur": 845,
-    "Al-Asr": 846,
-    "Al-Humazah": 846,
-    "Al-Feel": 846,
-    "Quraysh": 847,
-    "Al-Ma'un": 847,
-    "Al-Kawthar": 848,
-    "Al-Kafirun": 848,
-    "An-Nasr": 848,
-    "Al-Masad": 849,
-    "Al-Ikhlas": 849,
-    "Al-Falaq": 849,
-    "An-Nas": 850
+    "1": {
+        "name": "Al-Fatiha",
+        "page": 4
+    },
+    "2": {
+        "name": "Al-Baqarah",
+        "page": 5
+    },
+    "3": {
+        "name": "Ale-Imran",
+        "page": 70
+    },
+    "4": {
+        "name": "An-Nisa",
+        "page": 108
+    },
+    "5": {
+        "name": "Al-Ma'idah",
+        "page": 149
+    },
+    "6": {
+        "name": "Al-An'am",
+        "page": 179
+    },
+    "7": {
+        "name": "Al-Ar'af",
+        "page": 211
+    },
+    "8": {
+        "name": "Al-Anfal",
+        "page": 248
+    },
+    "9": {
+        "name": "At-Tawbah",
+        "page": 262
+    },
+    "10": {
+        "name": "Yunus",
+        "page": 290
+    },
+    "11": {
+        "name": "Hud",
+        "page": 310
+    },
+    "12": {
+        "name": "Yusuf",
+        "page": 330
+    },
+    "13": {
+        "name": "Ar-Rad",
+        "page": 348
+    },
+    "14": {
+        "name": "Ibrahim",
+        "page": 357
+    },
+    "15": {
+        "name": "Al-Hijr",
+        "page": 366
+    },
+    "16": {
+        "name": "An-Nahl",
+        "page": 374
+    },
+    "17": {
+        "name": "Bani Israel",
+        "page": 395
+    },
+    "18": {
+        "name": "Al-Kahf",
+        "page": 410
+    },
+    "19": {
+        "name": "Maryam",
+        "page": 427
+    },
+    "20": {
+        "name": "Ta Ha",
+        "page": 437
+    },
+    "21": {
+        "name": "Al-Anbiya",
+        "page": 451
+    },
+    "22": {
+        "name": "Al-Hajj",
+        "page": 464
+    },
+    "23": {
+        "name": "Al-Mu'minun",
+        "page": 479
+    },
+    "24": {
+        "name": "An-Nur",
+        "page": 489
+    },
+    "25": {
+        "name": "Al-Furqan",
+        "page": 503
+    },
+    "26": {
+        "name": "Ash-Shuara",
+        "page": 513
+    },
+    "27": {
+        "name": "An-Naml",
+        "page": 527
+    },
+    "28": {
+        "name": "Al-Qasas",
+        "page": 539
+    },
+    "29": {
+        "name": "Al-Ankabut",
+        "page": 554
+    },
+    "30": {
+        "name": "Ar-Rum",
+        "page": 564
+    },
+    "31": {
+        "name": "Luqman",
+        "page": 573
+    },
+    "32": {
+        "name": "As-Sajdah",
+        "page": 579
+    },
+    "33": {
+        "name": "Al-Ahzab",
+        "page": 583
+    },
+    "34": {
+        "name": "Saba",
+        "page": 597
+    },
+    "35": {
+        "name": "Fatir",
+        "page": 605
+    },
+    "36": {
+        "name": "Ya Seen",
+        "page": 613
+    },
+    "37": {
+        "name": "As-Saffat",
+        "page": 620
+    },
+    "38": {
+        "name": "Saad",
+        "page": 630
+    },
+    "39": {
+        "name": "Az-Zumar",
+        "page": 637
+    },
+    "40": {
+        "name": "Ghafir or Al-Mumin",
+        "page": 649
+    },
+    "41": {
+        "name": "Fussilat or Ha Meem As-Sajdah",
+        "page": 661
+    },
+    "42": {
+        "name": "Ash-Shu'ra",
+        "page": 670
+    },
+    "43": {
+        "name": "Az-Zukhruf",
+        "page": 679
+    },
+    "44": {
+        "name": "Ad-Dukhan",
+        "page": 688
+    },
+    "45": {
+        "name": "Al-Jathiya",
+        "page": 693
+    },
+    "46": {
+        "name": "Al-Ahqaf",
+        "page": 699
+    },
+    "47": {
+        "name": "Muhammad",
+        "page": 706
+    },
+    "48": {
+        "name": "Al-Fath",
+        "page": 712
+    },
+    "49": {
+        "name": "Al-Hujurat",
+        "page": 718
+    },
+    "50": {
+        "name": "Qaf",
+        "page": 723
+    },
+    "51": {
+        "name": "Adh-Dhariyat",
+        "page": 727
+    },
+    "52": {
+        "name": "At-Tur",
+        "page": 731
+    },
+    "53": {
+        "name": "An-Najm",
+        "page": 734
+    },
+    "54": {
+        "name": "Al-Qamar",
+        "page": 738
+    },
+    "55": {
+        "name": "Ar-Rahman",
+        "page": 742
+    },
+    "56": {
+        "name": "Al-Waqiah",
+        "page": 747
+    },
+    "57": {
+        "name": "Al-Hadeed",
+        "page": 752
+    },
+    "58": {
+        "name": "Al-Mujadalah",
+        "page": 759
+    },
+    "59": {
+        "name": "Al-Hashr",
+        "page": 763
+    },
+    "60": {
+        "name": "Al-Mumtahanah",
+        "page": 768
+    },
+    "61": {
+        "name": "As-Saff",
+        "page": 772
+    },
+    "62": {
+        "name": "Al-Jumu'ah",
+        "page": 775
+    },
+    "63": {
+        "name": "Al-Munafiqun",
+        "page": 777
+    },
+    "64": {
+        "name": "At-Taghabun",
+        "page": 779
+    },
+    "65": {
+        "name": "At-Talaq",
+        "page": 782
+    },
+    "66": {
+        "name": "At-Tahrim",
+        "page": 785
+    },
+    "67": {
+        "name": "Al-Mulk",
+        "page": 789
+    },
+    "68": {
+        "name": "Al-Qalam",
+        "page": 792
+    },
+    "69": {
+        "name": "Al-Haqqah",
+        "page": 796
+    },
+    "70": {
+        "name": "Al-Ma'rij",
+        "page": 799
+    },
+    "71": {
+        "name": "Nuh",
+        "page": 802
+    },
+    "72": {
+        "name": "Al-Jinn",
+        "page": 805
+    },
+    "73": {
+        "name": "Al-Muzzammil",
+        "page": 808
+    },
+    "74": {
+        "name": "Al-Muddaththir",
+        "page": 810
+    },
+    "75": {
+        "name": "Al-Qiyamah",
+        "page": 813
+    },
+    "76": {
+        "name": "Ad-Dahr or Al-Insan",
+        "page": 815
+    },
+    "77": {
+        "name": "Al-Mursalat",
+        "page": 818
+    },
+    "78": {
+        "name": "An-Naba",
+        "page": 821
+    },
+    "79": {
+        "name": "An-Naziat",
+        "page": 822
+    },
+    "80": {
+        "name": "Abasa",
+        "page": 824
+    },
+    "81": {
+        "name": "At-Takwir",
+        "page": 826
+    },
+    "82": {
+        "name": "Al-Infitar",
+        "page": 827
+    },
+    "83": {
+        "name": "Al-Mutaffifeen",
+        "page": 828
+    },
+    "84": {
+        "name": "Al-Inshiqaq",
+        "page": 830
+    },
+    "85": {
+        "name": "Al-Buruj",
+        "page": 831
+    },
+    "86": {
+        "name": "At-Tariq",
+        "page": 832
+    },
+    "87": {
+        "name": "Al-Ala",
+        "page": 833
+    },
+    "88": {
+        "name": "Al-Ghashiyah",
+        "page": 834
+    },
+    "89": {
+        "name": "Al-Fajr",
+        "page": 835
+    },
+    "90": {
+        "name": "Al-Balad",
+        "page": 837
+    },
+    "91": {
+        "name": "Ash-Shams",
+        "page": 838
+    },
+    "92": {
+        "name": "Al-Layl",
+        "page": 839
+    },
+    "93": {
+        "name": "Ad-Duha",
+        "page": 840
+    },
+    "94": {
+        "name": "Ash-Sharh",
+        "page": 840
+    },
+    "95": {
+        "name": "At-Teen",
+        "page": 841
+    },
+    "96": {
+        "name": "Al-Alaq",
+        "page": 841
+    },
+    "97": {
+        "name": "Al-Qadr",
+        "page": 842
+    },
+    "98": {
+        "name": "Al-Bayyinah",
+        "page": 842
+    },
+    "99": {
+        "name": "Az-Zilzal",
+        "page": 843
+    },
+    "100": {
+        "name": "Al-Adiyat",
+        "page": 844
+    },
+    "101": {
+        "name": "Al-Qari'ah",
+        "page": 845
+    },
+    "102": {
+        "name": "At-Takathur",
+        "page": 845
+    },
+    "103": {
+        "name": "Al-Asr",
+        "page": 846
+    },
+    "104": {
+        "name": "Al-Humazah",
+        "page": 846
+    },
+    "105": {
+        "name": "Al-Feel",
+        "page": 846
+    },
+    "106": {
+        "name": "Quraysh",
+        "page": 847
+    },
+    "107": {
+        "name": "Al-Ma'un",
+        "page": 847
+    },
+    "108": {
+        "name": "Al-Kawthar",
+        "page": 848
+    },
+    "109": {
+        "name": "Al-Kafirun",
+        "page": 848
+    },
+    "110": {
+        "name": "An-Nasr",
+        "page": 848
+    },
+    "111": {
+        "name": "Al-Masad",
+        "page": 849
+    },
+    "112": {
+        "name": "Al-Ikhlas",
+        "page": 849
+    },
+    "113": {
+        "name": "Al-Falaq",
+        "page": 849
+    },
+    "114": {
+        "name": "An-Nas",
+        "page": 850
+    }
 }

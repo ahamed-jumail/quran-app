@@ -41,15 +41,21 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
 
   Future<List<SurahIndexEntry>> _loadEntries() async {
     final String raw = await rootBundle.loadString(_assetPath);
-    final Map<String, dynamic> decoded = json.decode(raw) as Map<String, dynamic>;
-    final List<SurahIndexEntry> entries = <SurahIndexEntry>[];
-    int number = 1;
-    for (final MapEntry<String, dynamic> entry in decoded.entries) {
-      entries.add(
-        SurahIndexEntry(number: number, name: entry.key, startPage: entry.value as int),
-      );
-      number++;
-    }
+    final Map<String, dynamic> decoded =
+        json.decode(raw) as Map<String, dynamic>;
+    final List<SurahIndexEntry> entries =
+        decoded.entries.map((MapEntry<String, dynamic> entry) {
+          final Map<String, dynamic> value =
+              entry.value as Map<String, dynamic>;
+          return SurahIndexEntry(
+            number: int.parse(entry.key),
+            name: value['name'] as String,
+            startPage: value['page'] as int,
+          );
+        }).toList()..sort(
+          (SurahIndexEntry a, SurahIndexEntry b) =>
+              a.number.compareTo(b.number),
+        );
     return entries;
   }
 
@@ -60,7 +66,8 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
     return entries
         .where(
           (SurahIndexEntry e) =>
-              e.name.toLowerCase().contains(_query) || e.number.toString() == _query,
+              e.name.toLowerCase().contains(_query) ||
+              e.number.toString() == _query,
         )
         .toList();
   }
@@ -79,7 +86,12 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
         title: const Text('Surah Index'),
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
+        padding: EdgeInsets.fromLTRB(
+          AppSpacing.lg,
+          AppSpacing.md,
+          AppSpacing.lg,
+          0,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -88,37 +100,48 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
             Expanded(
               child: FutureBuilder<List<SurahIndexEntry>>(
                 future: _entriesFuture,
-                builder: (BuildContext context, AsyncSnapshot<List<SurahIndexEntry>> snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(
-                      child: CircularProgressIndicator(color: AppColors.gold),
-                    );
-                  }
-                  final List<SurahIndexEntry> filtered = _filter(snapshot.data!);
-                  if (filtered.isEmpty) {
-                    return Center(
-                      child: Text(
-                        'No Surah found',
-                        style: textTheme.manrope14Medium.copyWith(
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
-                    );
-                  }
-                  return ListView.separated(
-                    padding: EdgeInsets.only(bottom: AppSpacing.lg),
-                    itemCount: filtered.length,
-                    separatorBuilder: (BuildContext context, int index) =>
-                        SizedBox(height: AppSpacing.sm),
-                    itemBuilder: (BuildContext context, int index) {
-                      final SurahIndexEntry entry = filtered[index];
-                      return _SurahTile(
-                        entry: entry,
-                        onTap: () => context.push('/quran-reader', extra: entry.startPage),
+                builder:
+                    (
+                      BuildContext context,
+                      AsyncSnapshot<List<SurahIndexEntry>> snapshot,
+                    ) {
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.gold,
+                          ),
+                        );
+                      }
+                      final List<SurahIndexEntry> filtered = _filter(
+                        snapshot.data!,
+                      );
+                      if (filtered.isEmpty) {
+                        return Center(
+                          child: Text(
+                            'No Surah found',
+                            style: textTheme.manrope14Medium.copyWith(
+                              color: AppColors.textSecondary,
+                            ),
+                          ),
+                        );
+                      }
+                      return ListView.separated(
+                        padding: EdgeInsets.only(bottom: AppSpacing.lg),
+                        itemCount: filtered.length,
+                        separatorBuilder: (BuildContext context, int index) =>
+                            SizedBox(height: AppSpacing.sm),
+                        itemBuilder: (BuildContext context, int index) {
+                          final SurahIndexEntry entry = filtered[index];
+                          return _SurahTile(
+                            entry: entry,
+                            onTap: () => context.push(
+                              '/quran-reader',
+                              extra: entry.startPage,
+                            ),
+                          );
+                        },
                       );
                     },
-                  );
-                },
               ),
             ),
           ],
@@ -144,12 +167,17 @@ class _SearchField extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
-        style: textTheme.manrope14Regular.copyWith(color: AppColors.textPrimary),
+        style: textTheme.manrope14Regular.copyWith(
+          color: AppColors.textPrimary,
+        ),
         cursorColor: AppColors.gold,
         decoration: InputDecoration(
           isDense: true,
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 12.h),
+          contentPadding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: 12.h,
+          ),
           hintText: 'Search Surah by name or number',
           hintStyle: textTheme.manrope14Regular.copyWith(
             color: AppColors.textSecondary.withValues(alpha: 0.6),
@@ -160,6 +188,9 @@ class _SearchField extends StatelessWidget {
             size: 20.r,
           ),
         ),
+        onTapOutside: (PointerDownEvent event) {
+          FocusScope.of(context).unfocus();
+        },
       ),
     );
   }
@@ -184,7 +215,10 @@ class _SurahTile extends StatelessWidget {
         splashColor: AppColors.gold.withValues(alpha: 0.08),
         highlightColor: AppColors.gold.withValues(alpha: 0.04),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 12.h),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: 12.h,
+          ),
           decoration: BoxDecoration(
             color: AppColors.surfaceRaised,
             borderRadius: BorderRadius.circular(AppRadius.lg),
@@ -198,12 +232,16 @@ class _SurahTile extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColors.surfaceOverlay,
                   shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.gold.withValues(alpha: 0.28)),
+                  border: Border.all(
+                    color: AppColors.gold.withValues(alpha: 0.28),
+                  ),
                 ),
                 alignment: Alignment.center,
                 child: Text(
                   '${entry.number}',
-                  style: textTheme.manrope14Bold.copyWith(color: AppColors.gold),
+                  style: textTheme.manrope14Bold.copyWith(
+                    color: AppColors.gold,
+                  ),
                 ),
               ),
               SizedBox(width: AppSpacing.md),
@@ -236,9 +274,15 @@ class _SurahTile extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColors.surfaceOverlay,
                   shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.gold.withValues(alpha: 0.3)),
+                  border: Border.all(
+                    color: AppColors.gold.withValues(alpha: 0.3),
+                  ),
                 ),
-                child: Icon(Icons.arrow_forward_rounded, color: AppColors.gold, size: 15.r),
+                child: Icon(
+                  Icons.arrow_forward_rounded,
+                  color: AppColors.gold,
+                  size: 15.r,
+                ),
               ),
             ],
           ),
