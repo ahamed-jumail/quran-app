@@ -74,6 +74,12 @@ class CustomException implements Exception {
               statusCode: error.response?.statusCode,
               message: 'Failed to receive',
             );
+          case DioExceptionType.transformTimeout:
+            return CustomException(
+              exceptionType: _ExceptionType.ReceiveTimeoutException,
+              statusCode: error.response?.statusCode,
+              message: 'Failed to transform response',
+            );
           case DioExceptionType.badResponse:
           case DioExceptionType.connectionError:
           case DioExceptionType.unknown:
@@ -117,12 +123,6 @@ class CustomException implements Exception {
               exceptionType: _ExceptionType.ReceiveTimeoutException,
               statusCode: error.response?.statusCode,
               message: 'Bad Certificate',
-            );
-          case DioExceptionType.connectionError:
-            return CustomException(
-              exceptionType: _ExceptionType.ReceiveTimeoutException,
-              statusCode: error.response?.statusCode,
-              message: 'Connection Error',
             );
         }
       } else {

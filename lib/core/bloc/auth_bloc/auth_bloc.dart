@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/utils/helper_functions.dart';
 import '../../../../models/app_user.dart';
 import '../../../../models/token.dart';
+import '../../../app_router.dart';
 import '../../../global_widgets/toast_helper.dart';
-import '../../../views/auth/login_page.dart';
-import '../../../views/home/home_page.dart';
 import '../../api_services/auth_service.dart';
 import '../../base_bloc/base_bloc.dart';
 import '../../preference_client/preference_client.dart';
@@ -93,21 +93,13 @@ Future<void> onAuthBlocChange(
     required AppBloc appBloc}) async {
   switch (state.runtimeType) {
     case const (LogOutSuccess):
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute<dynamic>(
-            builder: (_) => const LoginPage(),
-          ));
+      context.goNamed(RouteConstants.homePage);
 
     case const (LoginWithPasswordSuccess):
       final LoginWithPasswordSuccess currentState =
           state as LoginWithPasswordSuccess;
       appBloc.add(SaveCurrentUser(user: currentState.user));
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute<dynamic>(
-            builder: (_) => const HomePage(),
-          ));
+      context.goNamed(RouteConstants.homePage);
 
     case const (AuthError):
       final AuthError currentState = state as AuthError;
