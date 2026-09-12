@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,6 +6,10 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
 import '../../models/surah_index_entry.dart';
+import 'surah_repository.dart';
+import 'widgets/surah_tile.dart';
+
+enum _RevelationFilter { all, makkiyah, madhiniya }
 
 class SurahIndexPage extends StatefulWidget {
   const SurahIndexPage({super.key});
@@ -18,16 +19,15 @@ class SurahIndexPage extends StatefulWidget {
 }
 
 class _SurahIndexPageState extends State<SurahIndexPage> {
-  static const String _assetPath = 'assets/jsons/surah_index.json';
-
   late final Future<List<SurahIndexEntry>> _entriesFuture;
   final TextEditingController _searchController = TextEditingController();
   String _query = '';
+  _RevelationFilter _filter = _RevelationFilter.all;
 
   @override
   void initState() {
     super.initState();
-    _entriesFuture = _loadEntries();
+    _entriesFuture = SurahRepository.loadAll();
     _searchController.addListener(() {
       setState(() => _query = _searchController.text.trim().toLowerCase());
     });
@@ -39,37 +39,27 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
     super.dispose();
   }
 
-  Future<List<SurahIndexEntry>> _loadEntries() async {
-    final String raw = await rootBundle.loadString(_assetPath);
-    final Map<String, dynamic> decoded =
-        json.decode(raw) as Map<String, dynamic>;
-    final List<SurahIndexEntry> entries =
-        decoded.entries.map((MapEntry<String, dynamic> entry) {
-          final Map<String, dynamic> value =
-              entry.value as Map<String, dynamic>;
-          return SurahIndexEntry(
-            number: int.parse(entry.key),
-            name: value['name'] as String,
-            startPage: value['page'] as int,
-          );
-        }).toList()..sort(
-          (SurahIndexEntry a, SurahIndexEntry b) =>
-              a.number.compareTo(b.number),
-        );
-    return entries;
+  bool _matchesFilter(SurahIndexEntry entry) {
+    switch (_filter) {
+      case _RevelationFilter.all:
+        return true;
+      case _RevelationFilter.makkiyah:
+        return entry.revelationType == 'Makkahiya';
+      case _RevelationFilter.madhiniya:
+        return entry.revelationType == 'Madhiniya';
+    }
   }
 
-  List<SurahIndexEntry> _filter(List<SurahIndexEntry> entries) {
-    if (_query.isEmpty) {
-      return entries;
-    }
-    return entries
-        .where(
-          (SurahIndexEntry e) =>
-              e.name.toLowerCase().contains(_query) ||
-              e.number.toString() == _query,
-        )
-        .toList();
+  List<SurahIndexEntry> _visibleEntries(List<SurahIndexEntry> entries) {
+    return entries.where((SurahIndexEntry e) {
+      if (!_matchesFilter(e)) {
+        return false;
+      }
+      if (_query.isEmpty) {
+        return true;
+      }
+      return e.name.toLowerCase().contains(_query) || e.number.toString() == _query;
+    }).toList();
   }
 
   @override
@@ -84,64 +74,76 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
           onPressed: () => context.pop(),
         ),
         title: const Text('Surah Index'),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.favorite_rounded),
+            onPressed: () => context.push('/liked-surahs'),
+          ),
+        ],
       ),
       body: Padding(
-        padding: EdgeInsets.fromLTRB(
-          AppSpacing.lg,
-          AppSpacing.md,
-          AppSpacing.lg,
-          0,
-        ),
+        padding: EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.md, AppSpacing.lg, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _SearchField(controller: _searchController),
             SizedBox(height: AppSpacing.md),
+            Row(
+              children: <Widget>[
+                _FilterPill(
+                  label: 'All',
+                  selected: _filter == _RevelationFilter.all,
+                  onTap: () => setState(() => _filter = _RevelationFilter.all),
+                ),
+                SizedBox(width: AppSpacing.sm),
+                _FilterPill(
+                  label: 'Makkiyah',
+                  selected: _filter == _RevelationFilter.makkiyah,
+                  onTap: () => setState(() => _filter = _RevelationFilter.makkiyah),
+                ),
+                SizedBox(width: AppSpacing.sm),
+                _FilterPill(
+                  label: 'Madhiniya',
+                  selected: _filter == _RevelationFilter.madhiniya,
+                  onTap: () => setState(() => _filter = _RevelationFilter.madhiniya),
+                ),
+              ],
+            ),
+            SizedBox(height: AppSpacing.md),
             Expanded(
               child: FutureBuilder<List<SurahIndexEntry>>(
                 future: _entriesFuture,
-                builder:
-                    (
-                      BuildContext context,
-                      AsyncSnapshot<List<SurahIndexEntry>> snapshot,
-                    ) {
-                      if (!snapshot.hasData) {
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.gold,
-                          ),
-                        );
-                      }
-                      final List<SurahIndexEntry> filtered = _filter(
-                        snapshot.data!,
-                      );
-                      if (filtered.isEmpty) {
-                        return Center(
-                          child: Text(
-                            'No Surah found',
-                            style: textTheme.manrope14Medium.copyWith(
-                              color: AppColors.textSecondary,
-                            ),
-                          ),
-                        );
-                      }
-                      return ListView.separated(
-                        padding: EdgeInsets.only(bottom: AppSpacing.lg),
-                        itemCount: filtered.length,
-                        separatorBuilder: (BuildContext context, int index) =>
-                            SizedBox(height: AppSpacing.sm),
-                        itemBuilder: (BuildContext context, int index) {
-                          final SurahIndexEntry entry = filtered[index];
-                          return _SurahTile(
-                            entry: entry,
-                            onTap: () => context.push(
-                              '/quran-reader',
-                              extra: entry.startPage,
-                            ),
-                          );
-                        },
+                builder: (BuildContext context, AsyncSnapshot<List<SurahIndexEntry>> snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(color: AppColors.gold),
+                    );
+                  }
+                  final List<SurahIndexEntry> filtered = _visibleEntries(snapshot.data!);
+                  if (filtered.isEmpty) {
+                    return Center(
+                      child: Text(
+                        'No Surah found',
+                        style: textTheme.manrope14Medium.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    );
+                  }
+                  return ListView.separated(
+                    padding: EdgeInsets.only(bottom: AppSpacing.lg),
+                    itemCount: filtered.length,
+                    separatorBuilder: (BuildContext context, int index) =>
+                        SizedBox(height: AppSpacing.sm),
+                    itemBuilder: (BuildContext context, int index) {
+                      final SurahIndexEntry entry = filtered[index];
+                      return SurahTile(
+                        entry: entry,
+                        onTap: () => context.push('/quran-reader', extra: entry.startPage),
                       );
                     },
+                  );
+                },
               ),
             ),
           ],
@@ -167,17 +169,12 @@ class _SearchField extends StatelessWidget {
       ),
       child: TextField(
         controller: controller,
-        style: textTheme.manrope14Regular.copyWith(
-          color: AppColors.textPrimary,
-        ),
+        style: textTheme.manrope14Regular.copyWith(color: AppColors.textPrimary),
         cursorColor: AppColors.gold,
         decoration: InputDecoration(
           isDense: true,
           border: InputBorder.none,
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: 12.h,
-          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 12.h),
           hintText: 'Search Surah by name or number',
           hintStyle: textTheme.manrope14Regular.copyWith(
             color: AppColors.textSecondary.withValues(alpha: 0.6),
@@ -196,95 +193,37 @@ class _SearchField extends StatelessWidget {
   }
 }
 
-class _SurahTile extends StatelessWidget {
-  const _SurahTile({required this.entry, required this.onTap});
+class _FilterPill extends StatelessWidget {
+  const _FilterPill({required this.label, required this.selected, required this.onTap});
 
-  final SurahIndexEntry entry;
+  final String label;
+  final bool selected;
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-
     return Material(
       color: AppColors.transparent,
-      borderRadius: BorderRadius.circular(AppRadius.lg),
-      clipBehavior: Clip.antiAlias,
+      borderRadius: BorderRadius.circular(AppRadius.pill),
       child: InkWell(
         onTap: onTap,
-        splashColor: AppColors.gold.withValues(alpha: 0.08),
-        highlightColor: AppColors.gold.withValues(alpha: 0.04),
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: 12.h,
-          ),
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.md, vertical: 8.h),
           decoration: BoxDecoration(
-            color: AppColors.surfaceRaised,
-            borderRadius: BorderRadius.circular(AppRadius.lg),
-            border: Border.all(color: AppColors.gold.withValues(alpha: 0.10)),
+            color: selected ? AppColors.gold : AppColors.surfaceRaised,
+            borderRadius: BorderRadius.circular(AppRadius.pill),
+            border: Border.all(
+              color: selected ? AppColors.gold : AppColors.gold.withValues(alpha: 0.18),
+            ),
           ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                height: 42.r,
-                width: 42.r,
-                decoration: BoxDecoration(
-                  color: AppColors.surfaceOverlay,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: AppColors.gold.withValues(alpha: 0.28),
-                  ),
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  '${entry.number}',
-                  style: textTheme.manrope14Bold.copyWith(
-                    color: AppColors.gold,
-                  ),
-                ),
-              ),
-              SizedBox(width: AppSpacing.md),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      entry.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: textTheme.fraunces18SemiBold.copyWith(
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    SizedBox(height: 2.h),
-                    Text(
-                      'Starts at page ${entry.startPage}',
-                      style: textTheme.manrope12Regular.copyWith(
-                        color: AppColors.textSecondary.withValues(alpha: 0.75),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(width: AppSpacing.sm),
-              Container(
-                height: 30.r,
-                width: 30.r,
-                decoration: BoxDecoration(
-                  color: AppColors.surfaceOverlay,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: AppColors.gold.withValues(alpha: 0.3),
-                  ),
-                ),
-                child: Icon(
-                  Icons.arrow_forward_rounded,
-                  color: AppColors.gold,
-                  size: 15.r,
-                ),
-              ),
-            ],
+          child: Text(
+            label,
+            style: textTheme.manrope12SemiBold.copyWith(
+              color: selected ? AppColors.surfaceBase : AppColors.textSecondary,
+            ),
           ),
         ),
       ),

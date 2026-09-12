@@ -112,7 +112,7 @@ class HomePage extends StatelessWidget {
                               icon: Icons.bookmark_rounded,
                               label: 'Bookmarks',
                               subtitle: 'Your saved verses',
-                              onTap: () {},
+                              onTap: () => context.push('/bookmarked-surahs'),
                             ),
                           ),
                         ],

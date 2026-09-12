@@ -11,6 +11,7 @@ import 'core/api_repository/api_repository.dart';
 import 'core/bloc/app_bloc/app_bloc.dart';
 import 'core/bloc/auth_bloc/auth_bloc.dart';
 import 'core/bloc/quran_progress/quran_progress_cubit.dart';
+import 'core/bloc/surah_interactions/surah_interactions_cubit.dart';
 import 'core/config/app_config.dart';
 
 Future<void> main() async {
@@ -45,6 +46,9 @@ Future<void> main() async {
             BlocProvider<AuthBloc>(create: (_) => AuthBloc()),
             BlocProvider<AppBloc>(create: (_) => AppBloc()),
             BlocProvider<QuranProgressCubit>(create: (_) => QuranProgressCubit()),
+            BlocProvider<SurahInteractionsCubit>(
+              create: (_) => SurahInteractionsCubit(),
+            ),
           ],
           child: const App(),
         ),
