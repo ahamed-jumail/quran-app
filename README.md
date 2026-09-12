@@ -23,7 +23,7 @@ mobile_boiler_plate_with_bloc_state_management/
 │
 ├── android/                       # Android native code and configuration
 │   ├── app/
-│   │   ├── build.gradle.kts       # Android app build configuration (single "production" flavor)
+│   │   ├── build.gradle.kts       # Android app build configuration (no flavors)
 │   │   └── src/                   # Android source files
 │   ├── build.gradle.kts           # Root Android build configuration
 │   ├── settings.gradle.kts        # Gradle settings
@@ -107,14 +107,17 @@ flutter pub run build_runner build
 
 4. Run the app:
 ```bash
-flutter run -t lib/main.dart --flavor production --dart-define-from-file=.env
+flutter run -t lib/main.dart --dart-define-from-file=.env
 ```
 
 5. Build the app:
 ```bash
-flutter build apk --flavor production --dart-define-from-file=.env
+flutter build apk --dart-define-from-file=.env
 flutter build ios --flavor production --dart-define-from-file=.env
 ```
+
+**Note:** Android has no build flavor and needs no `--flavor` flag. iOS still uses a single
+`production`-suffixed Xcode configuration and requires `--flavor production`.
 
 **Note:** The project ships a single `.env` file in the project root with the following format:
 ```

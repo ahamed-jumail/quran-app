@@ -31,16 +31,7 @@ extensions.configure<ApplicationExtension> {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-    }
-
-    // Single "production" flavor, kept to mirror the iOS project's
-    // Debug/Release/Profile-production build configurations.
-    flavorDimensions += "flavor-type"
-    productFlavors {
-        create("production") {
-            dimension = "flavor-type"
-            resValue(type = "string", name = "app_name", value = "BP")
-        }
+        resValue(type = "string", name = "app_name", value = "BP")
     }
 
     buildTypes {

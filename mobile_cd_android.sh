@@ -17,7 +17,7 @@ VERSION_NAME="${VERSION_NAME:-$DEFAULT_VERSION_NAME}"
 BUILD_NUMBER="${BUILD_NUMBER:-$(date +%s)}"
 RELEASE_NOTES="${RELEASE_NOTES:-$DEFAULT_RELEASE_NOTES}"
 
-APK_PATH="build/app/outputs/flutter-apk/app-production-release.apk"
+APK_PATH="build/app/outputs/flutter-apk/app-release.apk"
 
 # ----------------------------
 # LOG VALUES
@@ -32,7 +32,6 @@ echo "$RELEASE_NOTES"
 # ----------------------------
 echo "📦 Building APK"
 flutter build apk \
-  --flavor production \
   --dart-define-from-file=.env \
   --build-name "$VERSION_NAME" \
   --build-number "$BUILD_NUMBER"
