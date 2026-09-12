@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:io' show Platform;
 import 'dart:math' as math;
 
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -41,9 +38,16 @@ Matrix4 _clampToFirstReadablePage(
       layout.pageLayouts[QuranProgressState.firstReadablePage - 1].top;
   final double minY = firstReadableTop + hh;
   final double maxY = math.max(minY, layout.documentSize.height - hh);
-  final double x = position.dx.clamp(hw, math.max(hw, layout.documentSize.width - hw));
+  final double x = position.dx.clamp(
+    hw,
+    math.max(hw, layout.documentSize.width - hw),
+  );
   final double y = position.dy.clamp(minY, maxY);
-  return controller.calcMatrixFor(Offset(x, y), zoom: newZoom, viewSize: viewSize);
+  return controller.calcMatrixFor(
+    Offset(x, y),
+    zoom: newZoom,
+    viewSize: viewSize,
+  );
 }
 
 class QuranReaderPage extends StatefulWidget {
@@ -83,14 +87,6 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
     // _settleIdleWindow (e.g. very slow devices) — reveal anyway rather than
     // leave the loading cover up forever.
     _settleFallbackTimer = Timer(_settleMaxWait, _markSettled);
-
-    if (!kIsWeb && Platform.isAndroid) {
-      SystemChrome.setPreferredOrientations(<DeviceOrientation>[
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.landscapeLeft,
-        DeviceOrientation.landscapeRight,
-      ]);
-    }
   }
 
   void _handleScroll() {
@@ -158,9 +154,6 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
     _settleFallbackTimer?.cancel();
     _flushFinalProgress();
     _controller.removeListener(_handleScroll);
-    // Runs unconditionally (not inside the try above) so a stale/detached
-    // controller can never prevent the app from returning to portrait.
-    _restorePortraitOrientation();
     super.dispose();
   }
 
@@ -176,14 +169,6 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
     }
   }
 
-  void _restorePortraitOrientation() {
-    if (!kIsWeb && Platform.isAndroid) {
-      SystemChrome.setPreferredOrientations(<DeviceOrientation>[
-        DeviceOrientation.portraitUp,
-      ]);
-    }
-  }
-
   void _toggleAppBarOnTap() {
     setState(() => _appBarVisible = !_appBarVisible);
   }
@@ -195,186 +180,181 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
     const Duration animationDuration = Duration(milliseconds: 250);
     const Curve animationCurve = Curves.easeInOut;
 
-    return PopScope(
-      onPopInvokedWithResult: (bool didPop, Object? result) {
-        if (didPop) {
-          _restorePortraitOrientation();
-        }
-      },
-      child: Scaffold(
-        backgroundColor: AppColors.surfaceBase,
-        body: Stack(
-          children: <Widget>[
-            AnimatedPositioned(
-              duration: animationDuration,
-              curve: animationCurve,
-              top: _appBarVisible ? appBarHeight : statusBarHeight,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: PdfViewer.asset(
-                kQuranAssetPath,
-                controller: _controller,
-                initialPageNumber: _initialPage,
-                params: PdfViewerParams(
-                  backgroundColor: AppColors.surfaceBase,
-                  onPageChanged: _onPageChanged,
-                  normalizeMatrix: _clampToFirstReadablePage,
-                  // The default text-selection context menu crashes with a
-                  // MaterialLocalizations assertion on long-press; this is a
-                  // static Mushaf page, not a document users need to copy
-                  // text from, so selection is simply turned off.
-                  textSelectionParams: const PdfTextSelectionParams(enabled: false),
-                  viewerOverlayBuilder:
-                      (
-                        BuildContext context,
-                        Size size,
-                        PdfViewerHandleLinkTap handleLinkTap,
-                      ) => <Widget>[
-                        GestureDetector(
-                          behavior: HitTestBehavior.translucent,
-                          onTapUp: (TapUpDetails details) {
-                            final bool linkHandled = handleLinkTap(
-                              details.localPosition,
-                            );
-                            if (!linkHandled) {
-                              _toggleAppBarOnTap();
-                            }
-                          },
-                          child: IgnorePointer(
-                            child: SizedBox(
-                              width: size.width,
-                              height: size.height,
-                            ),
+    return Scaffold(
+      backgroundColor: AppColors.surfaceBase,
+      body: Stack(
+        children: <Widget>[
+          AnimatedPositioned(
+            duration: animationDuration,
+            curve: animationCurve,
+            top: _appBarVisible ? appBarHeight : statusBarHeight,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: PdfViewer.asset(
+              kQuranAssetPath,
+              controller: _controller,
+              initialPageNumber: _initialPage,
+              params: PdfViewerParams(
+                backgroundColor: AppColors.surfaceBase,
+                onPageChanged: _onPageChanged,
+                normalizeMatrix: _clampToFirstReadablePage,
+                // The default text-selection context menu crashes with a
+                // MaterialLocalizations assertion on long-press; this is a
+                // static Mushaf page, not a document users need to copy
+                // text from, so selection is simply turned off.
+                textSelectionParams: const PdfTextSelectionParams(
+                  enabled: false,
+                ),
+                viewerOverlayBuilder:
+                    (
+                      BuildContext context,
+                      Size size,
+                      PdfViewerHandleLinkTap handleLinkTap,
+                    ) => <Widget>[
+                      GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTapUp: (TapUpDetails details) {
+                          final bool linkHandled = handleLinkTap(
+                            details.localPosition,
+                          );
+                          if (!linkHandled) {
+                            _toggleAppBarOnTap();
+                          }
+                        },
+                        child: IgnorePointer(
+                          child: SizedBox(
+                            width: size.width,
+                            height: size.height,
                           ),
                         ),
-                        PdfViewerScrollThumb(
-                          controller: _controller,
-                          thumbSize: const Size(28, 48),
-                          thumbBuilder:
-                              (
-                                BuildContext context,
-                                Size thumbSize,
-                                int? pageNumber,
-                                PdfViewerController controller,
-                              ) => Listener(
-                                // Marks the thumb as "being dragged" so the
-                                // scroll-direction hide logic never yanks it
-                                // away from under the user's finger while
-                                // they're mid-drag, regardless of which way
-                                // they're dragging it.
-                                onPointerDown: (_) =>
-                                    setState(() => _isDraggingThumb = true),
-                                onPointerUp: (_) =>
-                                    setState(() => _isDraggingThumb = false),
-                                onPointerCancel: (_) =>
-                                    setState(() => _isDraggingThumb = false),
-                                child: IgnorePointer(
-                                  // The thumb should hide/reveal together with
-                                  // the app bar (same scroll-to-hide, tap-to-
-                                  // reveal gesture), rather than staying pinned
-                                  // on screen while the reader is immersive.
-                                  ignoring: !_appBarVisible,
-                                  child: AnimatedOpacity(
-                                    opacity: _appBarVisible ? 1 : 0,
-                                    duration: animationDuration,
-                                    curve: animationCurve,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: AppColors.gold,
-                                        borderRadius: BorderRadius.circular(
-                                          AppRadius.sm,
-                                        ),
-                                        boxShadow: <BoxShadow>[
-                                          BoxShadow(
-                                            color: AppColors.shadow.withValues(
-                                              alpha: 0.4,
-                                            ),
-                                            blurRadius: 6,
-                                            offset: const Offset(0, 2),
-                                          ),
-                                        ],
+                      ),
+                      PdfViewerScrollThumb(
+                        controller: _controller,
+                        thumbSize: const Size(28, 48),
+                        thumbBuilder:
+                            (
+                              BuildContext context,
+                              Size thumbSize,
+                              int? pageNumber,
+                              PdfViewerController controller,
+                            ) => Listener(
+                              // Marks the thumb as "being dragged" so the
+                              // scroll-direction hide logic never yanks it
+                              // away from under the user's finger while
+                              // they're mid-drag, regardless of which way
+                              // they're dragging it.
+                              onPointerDown: (_) =>
+                                  setState(() => _isDraggingThumb = true),
+                              onPointerUp: (_) =>
+                                  setState(() => _isDraggingThumb = false),
+                              onPointerCancel: (_) =>
+                                  setState(() => _isDraggingThumb = false),
+                              child: IgnorePointer(
+                                // The thumb should hide/reveal together with
+                                // the app bar (same scroll-to-hide, tap-to-
+                                // reveal gesture), rather than staying pinned
+                                // on screen while the reader is immersive.
+                                ignoring: !_appBarVisible,
+                                child: AnimatedOpacity(
+                                  opacity: _appBarVisible ? 1 : 0,
+                                  duration: animationDuration,
+                                  curve: animationCurve,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: AppColors.gold,
+                                      borderRadius: BorderRadius.circular(
+                                        AppRadius.sm,
                                       ),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        pageNumber?.toString() ?? '',
-                                        style: TextStyle(
-                                          color: AppColors.surfaceBase,
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 12.sp,
+                                      boxShadow: <BoxShadow>[
+                                        BoxShadow(
+                                          color: AppColors.shadow.withValues(
+                                            alpha: 0.4,
+                                          ),
+                                          blurRadius: 6,
+                                          offset: const Offset(0, 2),
                                         ),
+                                      ],
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      pageNumber?.toString() ?? '',
+                                      style: TextStyle(
+                                        color: AppColors.surfaceBase,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 12.sp,
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                        ),
-                      ],
-                ),
-              ),
-            ),
-            // Masks the resume jump/settle for a deep page behind an opaque
-            // loading cover, fading away only once the page position has
-            // gone still — so the user never sees the intermediate glitch.
-            Positioned.fill(
-              child: IgnorePointer(
-                ignoring: _settled,
-                child: AnimatedOpacity(
-                  opacity: _settled ? 0 : 1,
-                  duration: const Duration(milliseconds: 200),
-                  curve: Curves.easeOut,
-                  child: const ColoredBox(
-                    color: AppColors.surfaceBase,
-                    child: Center(child: _IslamicStarLoader()),
-                  ),
-                ),
-              ),
-            ),
-            // Fixed status-bar backdrop: always themed, never covered by the
-            // PDF, regardless of whether the toolbar below is shown or hidden.
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              height: statusBarHeight,
-              child: const ColoredBox(color: AppColors.surfaceRaised),
-            ),
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: AnimatedSlide(
-                // The slide fraction is relative to this widget's own height,
-                // so its total height must equal the full distance it needs
-                // to travel to clear the screen — the status-bar gap it sits
-                // below (as transparent padding, letting the fixed backdrop
-                // behind it show through) plus the toolbar itself. Otherwise
-                // "-1" only clears the toolbar's own height and leaves it
-                // pinned, overlapping the status bar.
-                offset: _appBarVisible ? Offset.zero : const Offset(0, -1),
-                duration: animationDuration,
-                curve: animationCurve,
-                child: Padding(
-                  padding: EdgeInsets.only(top: statusBarHeight),
-                  child: AppBar(
-                    primary: false,
-                    leading: IconButton(
-                      icon: const Icon(Icons.arrow_back_rounded),
-                      onPressed: () => context.pop(),
-                    ),
-                    title: const Text('Tajweed Quran'),
-                    actions: <Widget>[
-                      IconButton(
-                        icon: const Icon(Icons.info_outline_rounded),
-                        onPressed: () => context.push('/color-codes'),
+                            ),
                       ),
                     ],
-                  ),
+              ),
+            ),
+          ),
+          // Masks the resume jump/settle for a deep page behind an opaque
+          // loading cover, fading away only once the page position has
+          // gone still — so the user never sees the intermediate glitch.
+          Positioned.fill(
+            child: IgnorePointer(
+              ignoring: _settled,
+              child: AnimatedOpacity(
+                opacity: _settled ? 0 : 1,
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeOut,
+                child: const ColoredBox(
+                  color: AppColors.surfaceBase,
+                  child: Center(child: _IslamicStarLoader()),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+          // Fixed status-bar backdrop: always themed, never covered by the
+          // PDF, regardless of whether the toolbar below is shown or hidden.
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            height: statusBarHeight,
+            child: const ColoredBox(color: AppColors.surfaceRaised),
+          ),
+          Positioned(
+            top: 0,
+            left: 0,
+            right: 0,
+            child: AnimatedSlide(
+              // The slide fraction is relative to this widget's own height,
+              // so its total height must equal the full distance it needs
+              // to travel to clear the screen — the status-bar gap it sits
+              // below (as transparent padding, letting the fixed backdrop
+              // behind it show through) plus the toolbar itself. Otherwise
+              // "-1" only clears the toolbar's own height and leaves it
+              // pinned, overlapping the status bar.
+              offset: _appBarVisible ? Offset.zero : const Offset(0, -1),
+              duration: animationDuration,
+              curve: animationCurve,
+              child: Padding(
+                padding: EdgeInsets.only(top: statusBarHeight),
+                child: AppBar(
+                  primary: false,
+                  leading: IconButton(
+                    icon: const Icon(Icons.arrow_back_rounded),
+                    onPressed: () => context.pop(),
+                  ),
+                  title: const Text('Tajweed Quran'),
+                  actions: <Widget>[
+                    IconButton(
+                      icon: const Icon(Icons.info_outline_rounded),
+                      onPressed: () => context.push('/color-codes'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -421,7 +401,8 @@ class _IslamicStarLoaderState extends State<_IslamicStarLoader>
         child: CustomPaint(painter: _IslamicStarPainter()),
       ),
       builder: (BuildContext context, Widget? child) {
-        final double pulse = 0.92 + 0.08 * math.sin(_controller.value * 2 * math.pi);
+        final double pulse =
+            0.92 + 0.08 * math.sin(_controller.value * 2 * math.pi);
         return Transform.rotate(
           angle: _controller.value * 2 * math.pi,
           child: Transform.scale(scale: pulse, child: child),
@@ -471,7 +452,11 @@ class _IslamicStarPainter extends CustomPainter {
     drawSquare(0);
     drawSquare(math.pi / 4);
 
-    canvas.drawCircle(center, size.width * 0.05, Paint()..color = AppColors.gold);
+    canvas.drawCircle(
+      center,
+      size.width * 0.05,
+      Paint()..color = AppColors.gold,
+    );
   }
 
   @override
