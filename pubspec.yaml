@@ -90,68 +90,35 @@ flutter:
   # https://flutter.dev/assets-and-images/#from-packages
 
   fonts:
-    # Satoshi — referenced by AppTheme / SatoshiTextStyles. Add the Satoshi
-    # .otf/.ttf files under assets/fonts/ and fill this in; until then 'Satoshi'
-    # falls back to the platform default font.
-    # - family: Satoshi
-    #   fonts:
-    #     - asset: assets/fonts/Satoshi-Light.otf
-    #       weight: 300
-    #     - asset: assets/fonts/Satoshi-Regular.otf
-    #       weight: 400
-    #     - asset: assets/fonts/Satoshi-Medium.otf
-    #       weight: 500
-    #     - asset: assets/fonts/Satoshi-Bold.otf
-    #       weight: 700
-    #     - asset: assets/fonts/Satoshi-Black.otf
-    #       weight: 900
-    - family: Geist
+    - family: Fraunces
       fonts:
-        - asset: assets/fonts/static/Geist-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/static/Geist-ThinItalic.ttf
-          weight: 100
-          style: italic
-        - asset: assets/fonts/static/Geist-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/static/Geist-ExtraLightItalic.ttf
-          weight: 200
-          style: italic
-        - asset: assets/fonts/static/Geist-Light.ttf
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
           weight: 300
-        - asset: assets/fonts/static/Geist-LightItalic.ttf
-          weight: 300
-          style: italic
-        - asset: assets/fonts/static/Geist-Regular.ttf
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
           weight: 400
-        - asset: assets/fonts/static/Geist-Italic.ttf
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
+          weight: 500
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
+          weight: 600
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
+          weight: 700
+        - asset: assets/fonts/fraunces/Fraunces-Italic-Variable.ttf
           weight: 400
           style: italic
-        - asset: assets/fonts/static/Geist-Medium.ttf
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
+          weight: 300
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
+          weight: 400
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
           weight: 500
-        - asset: assets/fonts/static/Geist-MediumItalic.ttf
-          weight: 500
-          style: italic
-        - asset: assets/fonts/static/Geist-SemiBold.ttf
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
           weight: 600
-        - asset: assets/fonts/static/Geist-SemiBoldItalic.ttf
-          weight: 600
-          style: italic
-        - asset: assets/fonts/static/Geist-Bold.ttf
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
           weight: 700
-        - asset: assets/fonts/static/Geist-BoldItalic.ttf
-          weight: 700
-          style: italic
-        - asset: assets/fonts/static/Geist-ExtraBold.ttf
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
           weight: 800
-        - asset: assets/fonts/static/Geist-ExtraBoldItalic.ttf
-          weight: 800
-          style: italic
-        - asset: assets/fonts/static/Geist-Black.ttf
-          weight: 900
-        - asset: assets/fonts/static/Geist-BlackItalic.ttf
-          weight: 900
-          style: italic
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

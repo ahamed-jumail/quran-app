@@ -34,6 +34,7 @@ class AppColors {
   static const Color info = Color(0xFF5FB8B0);
 
   static const Color transparent = Color(0x00000000);
+  static const Color shadow = Color(0x33000000);
 
   // Aliases consumed by lib/shared_components/tabs/*.dart.
   static const Color tabTrack = surfaceRaised;
@@ -41,5 +42,5 @@ class AppColors {
   static const Color tabSelectedLabel = textPrimary;
   static const Color tabUnselectedLabel = textSecondary;
   static const Color tabIndicator = gold;
-  static const Color tabShadow = Color(0x33000000);
+  static const Color tabShadow = shadow;
 }
