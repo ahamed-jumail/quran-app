@@ -1,22 +1,14 @@
-import 'dart:io';
-
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'views/auth/init_page.dart';
-import 'views/auth/login_page.dart';
 import 'views/home/home_page.dart';
-import 'views/loader/app_loader.dart';
+import 'views/quran_reader/color_codes_page.dart';
+import 'views/quran_reader/quran_reader_page.dart';
 
-class FirebaseUtils {
-  static bool isFlutterTest = Platform.environment.containsKey('FLUTTER_TEST');
-}
 class RouteConstants {
-  static String initPage = 'init';
-  static String appLoaderPage = 'appLoader';
-  static String loginPage = 'login';
   static String homePage = 'home';
+  static String quranReaderPage = 'quranReader';
+  static String colorCodesPage = 'colorCodes';
 }
 
 class GoRouterInit {
@@ -30,46 +22,35 @@ class GoRouterInit {
     debugLogDiagnostics: true,
     observers: <NavigatorObserver>[
       GoRouterInit.routeObserver,
-      if (!FirebaseUtils.isFlutterTest)
-        FirebaseAnalyticsObserver(analytics: FirebaseAnalytics.instance),
     ],
     initialLocation: initialLocation,
     initialExtra: initialExtra,
     navigatorKey: navigatorKey,
     routes: <RouteBase>[
-      // Init Page
-       GoRoute(
-            path: '/',
-            name: RouteConstants.initPage,
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const MaterialPage<InitPage>(
-              child: InitPage(),
-            ),
-          ),
-          GoRoute(
-            path: '/loader',
-            name: RouteConstants.appLoaderPage,
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const MaterialPage<AppLoader>(
-              child: AppLoader(),
-            ),
-          ),
-          GoRoute(
-            path: '/auth/login',
-            name: RouteConstants.loginPage,
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const MaterialPage<LoginPage>(
-              child: LoginPage(),
-            ),
-          ),
-          GoRoute(
-            path: '/home',
-            name: RouteConstants.homePage,
-            pageBuilder: (BuildContext context, GoRouterState state) =>
-                const MaterialPage<HomePage>(
-              child: HomePage(),
-            ),
-          ),
+      GoRoute(
+        path: '/',
+        name: RouteConstants.homePage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<HomePage>(
+          child: HomePage(),
+        ),
+      ),
+      GoRoute(
+        path: '/quran-reader',
+        name: RouteConstants.quranReaderPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<QuranReaderPage>(
+          child: QuranReaderPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/color-codes',
+        name: RouteConstants.colorCodesPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<ColorCodesPage>(
+          child: ColorCodesPage(),
+        ),
+      ),
     ],
   );
 }

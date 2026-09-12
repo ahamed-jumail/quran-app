@@ -1,51 +1,127 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'app_color.dart';
-import 'app_typography.dart';
-import 'satoshi_text_styles.dart';
+import 'app_colors.dart';
+import 'app_dimensions.dart';
+import 'app_styles.dart';
+
 class AppTheme {
   AppTheme._();
 
-  // Light Theme
-  static final ThemeData lightTheme = ThemeData(
-    fontFamily: 'Geist',
-    // ignore: always_specify_types
-    extensions: <ThemeExtension>[
-      AppTypography(
-        regular: SatoshiTextStyles.regular(14.sp),
-        medium: SatoshiTextStyles.medium(14.sp),
-        semiBold: SatoshiTextStyles.semiBold(14.sp),
-        bold: SatoshiTextStyles.bold(14.sp),
+  static final ThemeData theme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    fontFamily: bodyFont,
+    scaffoldBackgroundColor: AppColors.surfaceBase,
+    colorScheme: const ColorScheme.dark(
+      primary: AppColors.emerald,
+      onPrimary: AppColors.textPrimary,
+      secondary: AppColors.gold,
+      onSecondary: AppColors.surfaceBase,
+      tertiary: AppColors.goldLight,
+      onTertiary: AppColors.surfaceBase,
+      surface: AppColors.surfaceRaised,
+      onSurface: AppColors.textPrimary,
+      error: AppColors.error,
+      onError: AppColors.surfaceBase,
+      outline: AppColors.divider,
+    ),
+    textTheme: TextTheme(
+      displayLarge: const TextTheme().fraunces40Bold,
+      displayMedium: const TextTheme().fraunces36Bold,
+      displaySmall: const TextTheme().fraunces32Bold,
+      headlineLarge: const TextTheme().fraunces28Medium,
+      headlineMedium: const TextTheme().fraunces24SemiBold,
+      headlineSmall: const TextTheme().fraunces20SemiBold,
+      titleLarge: const TextTheme().fraunces20Medium,
+      titleMedium: const TextTheme().manrope16SemiBold,
+      titleSmall: const TextTheme().manrope14SemiBold,
+      bodyLarge: const TextTheme().manrope16Regular,
+      bodyMedium: const TextTheme().manrope14Regular,
+      bodySmall: const TextTheme().manrope12Regular,
+      labelLarge: const TextTheme().manrope14Medium,
+      labelMedium: const TextTheme().manrope12Medium,
+      labelSmall: const TextTheme().manrope10Medium,
+    ).apply(
+      displayColor: AppColors.textPrimary,
+      bodyColor: AppColors.textPrimary,
+    ),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.surfaceRaised,
+      foregroundColor: AppColors.textPrimary,
+      elevation: 0,
+      centerTitle: true,
+    ),
+    cardTheme: CardThemeData(
+      color: AppColors.surfaceOverlay,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.md),
       ),
-      const AppColorScheme(
-        background1: Color(0xFFFFFFFF),
-        background2: Color(0xFFF9F9F9),
-        background3: Color(0xFFF2F2F2),
-        background4: Color(0xFFE8E8E8),
-        background5: Color(0xFFDADADA),
+    ),
+    dialogTheme: DialogThemeData(
+      backgroundColor: AppColors.surfaceOverlay,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.lg),
       ),
-    ],
-  );
-
-  // Dark Theme
-  static final ThemeData darkTheme = ThemeData(
-    fontFamily: 'Geist',
-    // ignore: always_specify_types
-    extensions: <ThemeExtension>[
-      AppTypography(
-        regular: SatoshiTextStyles.regular(14.sp),
-        medium: SatoshiTextStyles.medium(14.sp),
-        semiBold: SatoshiTextStyles.semiBold(14.sp),
-        bold: SatoshiTextStyles.bold(14.sp),
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppColors.surfaceOverlay,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.lg)),
       ),
-      const AppColorScheme(
-        background1: Color(0xFFFFFFFF),
-        background2: Color(0xFFF9F9F9),
-        background3: Color(0xFFF2F2F2),
-        background4: Color(0xFFE8E8E8),
-        background5: Color(0xFFDADADA),
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.gold,
+        foregroundColor: AppColors.surfaceBase,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.md),
+        ),
       ),
-    ],
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        backgroundColor: AppColors.gold,
+        foregroundColor: AppColors.surfaceBase,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppRadius.md),
+        ),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.surfaceRaised,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppRadius.sm),
+        borderSide: const BorderSide(color: AppColors.emerald),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppRadius.sm),
+        borderSide: const BorderSide(color: AppColors.emerald),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppRadius.sm),
+        borderSide: const BorderSide(color: AppColors.goldLight, width: 2),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppRadius.sm),
+        borderSide: const BorderSide(color: AppColors.error, width: 2),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppRadius.sm),
+        borderSide: const BorderSide(color: AppColors.error, width: 2),
+      ),
+      labelStyle: const TextStyle(color: AppColors.textSecondary),
+      hintStyle: const TextStyle(color: AppColors.textSecondary),
+    ),
+    dividerTheme: const DividerThemeData(color: AppColors.divider),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: AppColors.surfaceOverlay,
+      contentTextStyle: const TextStyle(color: AppColors.textPrimary),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.sm),
+      ),
+    ),
+    iconTheme: const IconThemeData(color: AppColors.textSecondary),
   );
 }

@@ -1,16 +1,14 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 
 class ApiLoggingInterceptor extends InterceptorsWrapper {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    // Log the API request
-    FirebaseCrashlytics.instance
-        .log('API Request: ${options.method} ${options.path}');
-    FirebaseCrashlytics.instance.log('Request Headers: ${options.headers}');
-    FirebaseCrashlytics.instance.log('Request Data: ${options.data}');
+    debugPrint('API Request: ${options.method} ${options.path}');
+    debugPrint('Request Headers: ${options.headers}');
+    debugPrint('Request Data: ${options.data}');
     handler.next(options); // Continue with the request
   }
 
@@ -31,12 +29,8 @@ class ApiLoggingInterceptor extends InterceptorsWrapper {
       return '${entry.key}: ${entry.value}';
     }).join('\n');
 
-    // Log to Firebase Crashlytics
-    await FirebaseCrashlytics.instance.recordError(
-      formattedLog,
-      null,
-      printDetails: true,
-      reason: 'API Call Details for API :${response.requestOptions.uri}',
+    debugPrint(
+      'API Call Details for API :${response.requestOptions.uri}\n$formattedLog',
     );
 
     // Call the next interceptor in the chain

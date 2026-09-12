@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/app_user.dart';
 import '../../models/token.dart';
+import '../bloc/quran_progress/quran_progress_state.dart';
 
 class PreferencesClient {
   PreferencesClient({required this.prefs});
@@ -44,5 +45,21 @@ class PreferencesClient {
     }
     final String tokenString = json.encode(token);
     prefs.setString('token', tokenString);
+  }
+
+  //****************************** quran-reading-progress **************************//
+  int getQuranLastPage() {
+    final int page =
+        prefs.getInt('quranLastPage') ?? QuranProgressState.firstReadablePage;
+    return page < QuranProgressState.firstReadablePage
+        ? QuranProgressState.firstReadablePage
+        : page;
+  }
+
+  int getQuranTotalPages() => prefs.getInt('quranTotalPages') ?? 0;
+
+  Future<void> setQuranProgress({required int page, required int totalPages}) async {
+    await prefs.setInt('quranLastPage', page);
+    await prefs.setInt('quranTotalPages', totalPages);
   }
 }

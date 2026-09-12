@@ -3,428 +3,452 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'app_colors.dart';
-
-const String geistFont = 'Geist';
+const String displayFont = 'Fraunces';
+const String bodyFont = 'Manrope';
 
 extension CustomTextTheme on TextTheme {
-  TextStyle get geist10Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 10.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
 
-  TextStyle get geist12Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 12.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist13Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 13.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist14Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist16Regular => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get fraunces16SemiBold => TextStyle(
+    fontFamily: displayFont,
     fontSize: 16.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
+    fontWeight: FontWeight.w600,
   );
 
-  TextStyle get geist18Regular => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get fraunces18SemiBold => TextStyle(
+    fontFamily: displayFont,
     fontSize: 18.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
+    fontWeight: FontWeight.w600,
   );
 
-  TextStyle get geist20Regular => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get fraunces20Medium => TextStyle(
+    fontFamily: displayFont,
     fontSize: 20.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
+    fontWeight: FontWeight.w500,
   );
 
-  TextStyle get geist22Regular => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get fraunces20SemiBold => TextStyle(
+    fontFamily: displayFont,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+  );
+
+  TextStyle get fraunces22SemiBold => TextStyle(
+    fontFamily: displayFont,
     fontSize: 22.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
+    fontWeight: FontWeight.w600,
   );
 
-  TextStyle get geist24Regular => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get fraunces24SemiBold => TextStyle(
+    fontFamily: displayFont,
     fontSize: 24.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
+    fontWeight: FontWeight.w600,
   );
 
-  TextStyle get geist30Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 30.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist32Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 32.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist36Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 36.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist40Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 40.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist52Regular => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 52.sp,
-    fontWeight: FontWeight.w400,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist10Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 10.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist12Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 12.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist14Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist16Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist18Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 18.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist20Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 20.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist24Light => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get fraunces24Bold => TextStyle(
+    fontFamily: displayFont,
     fontSize: 24.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
+    fontWeight: FontWeight.w700,
   );
 
-  TextStyle get geist32Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 32.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist36Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 36.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist40Light => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 40.sp,
-    fontWeight: FontWeight.w300,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist10Medium => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 10.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist12Medium => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 12.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist14Medium => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 14.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist16Medium => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 16.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist18Medium => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 18.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist20Medium => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 20.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist24Medium => TextStyle(
-    fontFamily: geistFont,
-    fontSize: 24.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.black,
-  );
-
-  TextStyle get geist28Medium => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get fraunces28Medium => TextStyle(
+    fontFamily: displayFont,
     fontSize: 28.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.black,
   );
 
-  TextStyle get geist32Medium => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get fraunces28SemiBold => TextStyle(
+    fontFamily: displayFont,
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w600,
+  );
+
+  TextStyle get fraunces32SemiBold => TextStyle(
+    fontFamily: displayFont,
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w600,
+  );
+
+  TextStyle get fraunces32Bold => TextStyle(
+    fontFamily: displayFont,
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  TextStyle get fraunces36Bold => TextStyle(
+    fontFamily: displayFont,
+    fontSize: 36.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  TextStyle get fraunces40Bold => TextStyle(
+    fontFamily: displayFont,
+    fontSize: 40.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  TextStyle get fraunces52Bold => TextStyle(
+    fontFamily: displayFont,
+    fontSize: 52.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  TextStyle get manrope10Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope12Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope13Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope14Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope16Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope18Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope20Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope22Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope24Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope30Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 30.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope32Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope36Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 36.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope40Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 40.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope52Regular => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 52.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  TextStyle get manrope10Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope12Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope14Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope16Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope18Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope20Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope24Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope32Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 32.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope36Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 36.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope40Light => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 40.sp,
+    fontWeight: FontWeight.w300,
+  );
+
+  TextStyle get manrope10Medium => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  TextStyle get manrope12Medium => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  TextStyle get manrope14Medium => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  TextStyle get manrope16Medium => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  TextStyle get manrope18Medium => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  TextStyle get manrope20Medium => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  TextStyle get manrope24Medium => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  TextStyle get manrope28Medium => TextStyle(
+    fontFamily: bodyFont,
+    fontSize: 28.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  TextStyle get manrope32Medium => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 32.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.black,
   );
 
-  TextStyle get geist36Medium => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope36Medium => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 36.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.black,
   );
 
-  TextStyle get geist40Medium => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope40Medium => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 40.sp,
     fontWeight: FontWeight.w500,
-    color: AppColors.black,
   );
 
-  TextStyle get geist10SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope10SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 10.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist12SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope12SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 12.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist13SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope13SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 13.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist14SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope14SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist16SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope16SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist18SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope18SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 18.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist20SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope20SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 20.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist24SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope24SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 24.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist32SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope32SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 32.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist36SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope36SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 36.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist40SemiBold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope40SemiBold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 40.sp,
     fontWeight: FontWeight.w600,
-    color: AppColors.black,
   );
 
-  TextStyle get geist8Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope8Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 8.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist10Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope10Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 10.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist12Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope12Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 12.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist13Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope13Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 13.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist14Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope14Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 14.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist16Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope16Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 16.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist18Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope18Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 18.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist20Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope20Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 20.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist24Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope24Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 24.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist32Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope32Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 32.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist34Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope34Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 34.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist36Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope36Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 36.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist40Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope40Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 40.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 
-  TextStyle get geist60Bold => TextStyle(
-    fontFamily: geistFont,
+  TextStyle get manrope60Bold => TextStyle(
+    fontFamily: bodyFont,
     fontSize: 60.sp,
     fontWeight: FontWeight.w700,
-    color: AppColors.black,
   );
 }

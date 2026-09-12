@@ -1,5 +1,5 @@
-name: flutter_bloc_bp
-description: Flutter Boiler plate using Bloc
+name: quran_app
+description: Personally customized Quran application
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -45,15 +45,13 @@ dependencies:
   bloc: ^9.1.0
   pretty_dio_logger: ^1.4.0
   dio: ^5.8.0+1
-  firebase_crashlytics: ^5.0.6
-  firebase_core: ^4.3.0
-  firebase_analytics: ^12.1.0
   email_validator: ^3.0.0
   mocktail: ^1.0.4
   network_image_mock: ^2.1.1
   dio_cache_interceptor_hive_store: ^3.2.2
   web_socket_channel: ^3.0.1
   equatable: ^2.0.5
+  pdfrx: ^2.6.1
   network_flutter:
     path: mobile_api_client
   
@@ -85,6 +83,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - .env
+    - assets/pdfs/tajweed_quran.pdf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -93,68 +92,35 @@ flutter:
   # https://flutter.dev/assets-and-images/#from-packages
 
   fonts:
-    # Satoshi — referenced by AppTheme / SatoshiTextStyles. Add the Satoshi
-    # .otf/.ttf files under assets/fonts/ and fill this in; until then 'Satoshi'
-    # falls back to the platform default font.
-    # - family: Satoshi
-    #   fonts:
-    #     - asset: assets/fonts/Satoshi-Light.otf
-    #       weight: 300
-    #     - asset: assets/fonts/Satoshi-Regular.otf
-    #       weight: 400
-    #     - asset: assets/fonts/Satoshi-Medium.otf
-    #       weight: 500
-    #     - asset: assets/fonts/Satoshi-Bold.otf
-    #       weight: 700
-    #     - asset: assets/fonts/Satoshi-Black.otf
-    #       weight: 900
-    - family: Geist
+    - family: Fraunces
       fonts:
-        - asset: assets/fonts/static/Geist-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/static/Geist-ThinItalic.ttf
-          weight: 100
-          style: italic
-        - asset: assets/fonts/static/Geist-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/static/Geist-ExtraLightItalic.ttf
-          weight: 200
-          style: italic
-        - asset: assets/fonts/static/Geist-Light.ttf
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
           weight: 300
-        - asset: assets/fonts/static/Geist-LightItalic.ttf
-          weight: 300
-          style: italic
-        - asset: assets/fonts/static/Geist-Regular.ttf
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
           weight: 400
-        - asset: assets/fonts/static/Geist-Italic.ttf
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
+          weight: 500
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
+          weight: 600
+        - asset: assets/fonts/fraunces/Fraunces-Variable.ttf
+          weight: 700
+        - asset: assets/fonts/fraunces/Fraunces-Italic-Variable.ttf
           weight: 400
           style: italic
-        - asset: assets/fonts/static/Geist-Medium.ttf
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
+          weight: 300
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
+          weight: 400
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
           weight: 500
-        - asset: assets/fonts/static/Geist-MediumItalic.ttf
-          weight: 500
-          style: italic
-        - asset: assets/fonts/static/Geist-SemiBold.ttf
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
           weight: 600
-        - asset: assets/fonts/static/Geist-SemiBoldItalic.ttf
-          weight: 600
-          style: italic
-        - asset: assets/fonts/static/Geist-Bold.ttf
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
           weight: 700
-        - asset: assets/fonts/static/Geist-BoldItalic.ttf
-          weight: 700
-          style: italic
-        - asset: assets/fonts/static/Geist-ExtraBold.ttf
+        - asset: assets/fonts/manrope/Manrope-Variable.ttf
           weight: 800
-        - asset: assets/fonts/static/Geist-ExtraBoldItalic.ttf
-          weight: 800
-          style: italic
-        - asset: assets/fonts/static/Geist-Black.ttf
-          weight: 900
-        - asset: assets/fonts/static/Geist-BlackItalic.ttf
-          weight: 900
-          style: italic
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

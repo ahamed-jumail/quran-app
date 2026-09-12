@@ -1,6 +1,6 @@
 # Flutter BLoC Boilerplate with State Management
 
-A comprehensive Flutter boilerplate project using the BLoC (Business Logic Component) pattern for state management. This project demonstrates best practices for structuring Flutter applications with Firebase integration, multi-flavor support, and automated CI/CD pipelines.
+A comprehensive Flutter boilerplate project using the BLoC (Business Logic Component) pattern for state management. This project demonstrates best practices for structuring Flutter applications with automated CI/CD pipelines.
 
 ## Project Structure
 
@@ -10,8 +10,6 @@ mobile_boiler_plate_with_bloc_state_management/
 │   ├── main.dart                  # Application entry point
 │   ├── app.dart                   # Main app configuration and setup
 │   ├── app_router.dart            # Navigation and routing setup
-│   ├── firebase_options.dart      # Firebase configuration for different flavors
-│   ├── flavors.dart               # Flavor definitions and configuration
 │   ├── core/                      # Core functionality and utilities
 │   │   ├── bloc/                  # BLoC classes for app-wide state
 │   │   ├── services/              # Core services (API, storage, etc.)
@@ -25,32 +23,21 @@ mobile_boiler_plate_with_bloc_state_management/
 │
 ├── android/                       # Android native code and configuration
 │   ├── app/
-│   │   ├── build.gradle.kts       # Android app build configuration
-│   │   ├── flavorizr.gradle.kts   # Flavor-specific Android configuration
+│   │   ├── build.gradle.kts       # Android app build configuration (no flavors)
 │   │   └── src/                   # Android source files
 │   ├── build.gradle.kts           # Root Android build configuration
 │   ├── settings.gradle.kts        # Gradle settings
 │   └── gradle/                    # Gradle wrapper and configuration
 │
 ├── ios/                           # iOS native code and configuration
-│   ├── Runner.xcodeproj/          # Xcode project configuration
+│   ├── Runner.xcodeproj/          # Xcode project configuration (single "production" flavor)
 │   ├── Runner.xcworkspace/        # Xcode workspace
 │   ├── Runner/                    # iOS app source files
 │   │   ├── AppDelegate.swift      # iOS app entry point
-│   │   ├── Info.plist            # iOS app configuration
-│   │   ├── dev/                   # Dev flavor resources
-│   │   └── staging/               # Staging flavor resources
+│   │   └── Info.plist            # iOS app configuration
 │   ├── Podfile                    # CocoaPods dependencies
 │   ├── Pods/                      # CocoaPods dependencies (generated)
 │   └── Flutter/                   # Flutter framework configuration
-│
-├── firebase/                      # Firebase configuration files
-│   ├── dev/
-│   │   ├── google-services.json   # Firebase config for Android (dev)
-│   │   └── GoogleService-Info.plist # Firebase config for iOS (dev)
-│   └── staging/
-│       ├── google-services.json   # Firebase config for Android (staging)
-│       └── GoogleService-Info.plist # Firebase config for iOS (staging)
 │
 ├── test/                          # Unit and widget tests
 │   ├── widget_test.dart           # Widget test examples
@@ -64,8 +51,6 @@ mobile_boiler_plate_with_bloc_state_management/
 ├── pubspec.yaml                   # Flutter/Dart dependencies and metadata
 ├── analysis_options.yaml          # Dart analyzer configuration
 ├── coverage_exclude.json          # Test coverage exclusions
-├── firebase.json                  # Firebase CLI configuration
-├── flavorizr.yml                  # Flavor configuration for automation
 ├── mobile_cd_android.sh           # Android CD/deployment script
 ├── mobile-pr-ci.yml               # CI/CD pipeline configuration
 └── test.sh                        # Test execution script
@@ -78,19 +63,6 @@ mobile_boiler_plate_with_bloc_state_management/
 - Reactive state management with Dart streams
 - Predictable state transitions and event handling
 
-### Multi-Flavor Support
-- **Dev**: Development environment with development Firebase project
-- **Staging**: Staging environment with staging Firebase project
-- Automated flavor switching for both Android and iOS using `flavorizr`
-
-### Firebase Integration
-- Firebase Authentication
-- Firestore Database
-- Firebase Analytics
-- Firebase Crash Reporting
-- Firebase Remote Config
-- Flavor-specific Firebase projects
-
 ### CI/CD Automation
 - GitHub Actions workflows for automated testing and deployment
 - Separate pipelines for pull requests and continuous delivery
@@ -102,9 +74,6 @@ mobile_boiler_plate_with_bloc_state_management/
 |------|---------|
 | `pubspec.yaml` | Flutter/Dart package dependencies and project metadata |
 | `analysis_options.yaml` | Dart code analysis rules and lint configuration |
-| `firebase.json` | Firebase CLI project configuration |
-| `flavorizr.yml` | Flavor automation configuration |
-| `firebase.json` | Firebase deployment rules |
 | `mobile_cd_android.sh` | Android continuous deployment script |
 | `mobile-pr-ci.yml` | GitHub Actions CI/CD workflow configuration |
 | `test.sh` | Test execution automation script |
@@ -136,37 +105,26 @@ flutter pub get
 flutter pub run build_runner build
 ```
 
-4. Update flavorizr configuration:
+4. Run the app:
 ```bash
-flutter pub run flutter_flavorizr
+flutter run -t lib/main.dart --dart-define-from-file=.env
 ```
 
-5. Run the app with environment variables (dev flavor):
+5. Build the app:
 ```bash
-flutter run -t lib/main.dart --flavor dev --dart-define-from-file=.env.dev
+flutter build apk --dart-define-from-file=.env
+flutter build ios --flavor production --dart-define-from-file=.env
 ```
 
-6. Run the app with environment variables (staging flavor):
-```bash
-flutter run -t lib/main.dart --flavor staging --dart-define-from-file=.env.staging
-```
+**Note:** Android has no build flavor and needs no `--flavor` flag. iOS still uses a single
+`production`-suffixed Xcode configuration and requires `--flavor production`.
 
-7. Build the app with environment variables (dev flavor):
-```bash
-flutter build apk --flavor dev --dart-define-from-file=.env.dev
-flutter build ios --flavor dev --dart-define-from-file=.env.dev
+**Note:** The project ships a single `.env` file in the project root with the following format:
 ```
-
-8. Build the app with environment variables (staging flavor):
-```bash
-flutter build apk --flavor staging --dart-define-from-file=.env.staging
-flutter build ios --flavor staging --dart-define-from-file=.env.staging
-```
-
-**Note:** Create `.env.dev` and `.env.staging` files in the project root with the following format:
-```
-API_BASE_URL=<your-dev-api-url>
-API_KEY=<your-dev-api-key>
+APP_LABEL=<display name>
+SCHEME=<https>
+SCOPE=<api/v1>
+HOST=<api host>
 ```
 
 ### Running Tests
@@ -188,7 +146,7 @@ This project follows clean architecture principles with the following layers:
 - **UI Layer**: Widgets and screens in the `views/` directory
 - **BLoC Layer**: Business logic components managing state in `core/bloc/`
 - **Domain Layer**: Use cases and business rules
-- **Data Layer**: Repositories and data sources (API, Firebase, local storage)
+- **Data Layer**: Repositories and data sources (API, local storage)
 - **Core Layer**: Shared utilities, services, and helpers
 
 ## Resources
@@ -196,7 +154,6 @@ This project follows clean architecture principles with the following layers:
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 - [BLoC Library Documentation](https://bloclibrary.dev/)
-- [Firebase Flutter Documentation](https://firebase.flutter.dev/)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,

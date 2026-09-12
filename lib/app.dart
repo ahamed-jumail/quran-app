@@ -9,26 +9,24 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      builder: (BuildContext context, Widget? widget) {
-        ScreenUtil.init(
-          context,
-          designSize: const Size(380, 844),
-          minTextAdapt: true,
-        );
-
-        return Theme(
-          data: AppTheme.lightTheme,
-          child: MediaQuery(
-            data: MediaQuery.of(
-              context,
-            ).copyWith(textScaler: TextScaler.noScaling),
-            child: widget ?? Container(),
-          ),
+    return ScreenUtilInit(
+      designSize: const Size(380, 844),
+      minTextAdapt: true,
+      builder: (BuildContext context, Widget? child) {
+        return MaterialApp.router(
+          theme: AppTheme.theme,
+          routerConfig: GoRouterInit.router,
+          debugShowCheckedModeBanner: false,
+          builder: (BuildContext context, Widget? widget) {
+            return MediaQuery(
+              data: MediaQuery.of(
+                context,
+              ).copyWith(textScaler: TextScaler.noScaling),
+              child: widget ?? Container(),
+            );
+          },
         );
       },
-      routerConfig: GoRouterInit.router,
-      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -34,9 +34,9 @@ class AppSegmentedTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
     final TextStyle selectedStyle = selectedLabelStyle ??
-        textTheme.geist14Medium.copyWith(color: AppColors.tabSelectedLabel);
+        textTheme.manrope14Medium.copyWith(color: AppColors.tabSelectedLabel);
     final TextStyle unselectedStyle = unselectedLabelStyle ??
-        textTheme.geist14Regular.copyWith(color: AppColors.tabUnselectedLabel);
+        textTheme.manrope14Regular.copyWith(color: AppColors.tabUnselectedLabel);
 
     final List<Widget> tabs = <Widget>[
       for (int i = 0; i < labels.length; i++)

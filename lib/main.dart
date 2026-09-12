@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nested/nested.dart';
 
@@ -11,6 +10,7 @@ import 'app.dart';
 import 'core/api_repository/api_repository.dart';
 import 'core/bloc/app_bloc/app_bloc.dart';
 import 'core/bloc/auth_bloc/auth_bloc.dart';
+import 'core/bloc/quran_progress/quran_progress_cubit.dart';
 import 'core/config/app_config.dart';
 
 Future<void> main() async {
@@ -20,22 +20,23 @@ Future<void> main() async {
       WidgetsFlutterBinding.ensureInitialized();
       AppConfig.initiate();
 
-      await ApiRepository.init();
+      await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+        DeviceOrientation.portraitUp,
+      ]);
 
-      await Firebase.initializeApp();
-      // ✅ Enable / Disable Crashlytics by build mode
-      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
-        !kDebugMode,
-      );
+      await ApiRepository.init();
 
       // ✅ Flutter framework errors
       FlutterError.onError = (FlutterErrorDetails details) {
-        FirebaseCrashlytics.instance.recordFlutterFatalError(details);
+        FlutterError.presentError(details);
+        if (kDebugMode) {
+          debugPrint('FlutterError: ${details.exceptionAsString()}');
+        }
       };
 
       // ✅ Async & platform errors
       PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
-        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+        debugPrint('PlatformDispatcher error: $error\n$stack');
         return true;
       };
       runApp(
@@ -43,13 +44,14 @@ Future<void> main() async {
           providers: <SingleChildWidget>[
             BlocProvider<AuthBloc>(create: (_) => AuthBloc()),
             BlocProvider<AppBloc>(create: (_) => AppBloc()),
+            BlocProvider<QuranProgressCubit>(create: (_) => QuranProgressCubit()),
           ],
           child: const App(),
         ),
       );
     },
     (Object error, StackTrace stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      debugPrint('Uncaught zone error: $error\n$stack');
     },
   );
 }
