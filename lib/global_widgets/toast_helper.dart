@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
+import '../core/theme/app_colors.dart';
+
 class ToastHelper {
   static void successToast(
       {required BuildContext context, required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       duration: const Duration(seconds: 2),
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: AppColors.success,
       content: Text(
         message,
-        style: const TextStyle(color: Colors.black),
+        style: const TextStyle(color: AppColors.surfaceBase),
       ),
     ));
   }
@@ -17,10 +19,10 @@ class ToastHelper {
       {required BuildContext context, required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       duration: const Duration(seconds: 2),
-      backgroundColor: Colors.redAccent,
+      backgroundColor: AppColors.error,
       content: Text(
         message,
-        style: const TextStyle(color: Colors.black),
+        style: const TextStyle(color: AppColors.surfaceBase),
       ),
     ));
   }

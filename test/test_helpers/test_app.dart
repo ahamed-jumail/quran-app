@@ -34,7 +34,7 @@ class TestAppState extends State<TestApp> with WidgetsBindingObserver {
         builder: (_, Widget? child) {
           return MaterialApp(
             navigatorKey: navigatorKey,
-            theme: AppTheme.lightTheme,
+            theme: AppTheme.theme,
             home: widget.testWidget,
             debugShowCheckedModeBanner: false,
           );

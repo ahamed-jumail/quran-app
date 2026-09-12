@@ -17,8 +17,12 @@ class App extends StatelessWidget {
           minTextAdapt: true,
         );
 
+        // AppTheme.theme uses `.sp`-scaled text styles, so it can only be
+        // built after ScreenUtil.init() above — it can't be passed as
+        // MaterialApp.router's `theme:` argument, which is evaluated before
+        // this builder runs.
         return Theme(
-          data: AppTheme.lightTheme,
+          data: AppTheme.theme,
           child: MediaQuery(
             data: MediaQuery.of(
               context,
