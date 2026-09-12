@@ -1,0 +1,1028 @@
+{
+    "1": {
+        "name": "Al-Fatiha",
+        "page": 4,
+        "arabicName": "الفاتحة",
+        "nameMeaning": "The Opening",
+        "numberOfAyah": 7,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Serves as the foundational exordium of the Quran, summarizing core themes of divine praise, sovereignty, mercy, and prayers for moral guidance."
+    },
+    "2": {
+        "name": "Al-Baqarah",
+        "page": 5,
+        "arabicName": "البقرة",
+        "nameMeaning": "The Cow",
+        "numberOfAyah": 286,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Establishes legal codification, civil governance, covenantal history, the story of Adam, and regulations concerning prayer, fasting, charity, and commercial law."
+    },
+    "3": {
+        "name": "Ale-Imran",
+        "page": 70,
+        "arabicName": "آل عمران",
+        "nameMeaning": "Family of Imran",
+        "numberOfAyah": 200,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Focuses on absolute divine monotheism, defense of creed against theological deviation, prophetic continuity, and moral resilience during trials."
+    },
+    "4": {
+        "name": "An-Nisa",
+        "page": 108,
+        "arabicName": "النساء",
+        "nameMeaning": "The Women",
+        "numberOfAyah": 176,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Outlines social justice frameworks, women's legal and property rights, inheritance rules, orphan protections, and family law."
+    },
+    "5": {
+        "name": "Al-Ma'idah",
+        "page": 149,
+        "arabicName": "المائدة",
+        "nameMeaning": "The Table Spread",
+        "numberOfAyah": 120,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Codifies dietary laws, ritual purity, legal covenants, judicial sanctions, and theological discourses regarding the table spread."
+    },
+    "6": {
+        "name": "Al-An'am",
+        "page": 179,
+        "arabicName": "الأنعام",
+        "nameMeaning": "The Cattle",
+        "numberOfAyah": 165,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Emphasizes absolute divine unity, cosmic creation, refutation of polytheism, and universal moral imperatives."
+    },
+    "7": {
+        "name": "Al-Ar'af",
+        "page": 211,
+        "arabicName": "الأعراف",
+        "nameMeaning": "The Heights",
+        "numberOfAyah": 206,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Details prophetic historical cycles, the ongoing struggle between good and evil, cosmic accountability, and warnings to tyrannical societies."
+    },
+    "8": {
+        "name": "Al-Anfal",
+        "page": 248,
+        "arabicName": "الأنفال",
+        "nameMeaning": "The Spoils of War",
+        "numberOfAyah": 75,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Provides legal and ethical guidelines for military defense, distribution of war spoils, alliance management, and tactical discipline."
+    },
+    "9": {
+        "name": "At-Tawbah",
+        "page": 262,
+        "arabicName": "التوبة",
+        "nameMeaning": "The Repentance",
+        "numberOfAyah": 129,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Declares the dissolution of treaties with hostile forces, addresses hypocritical compliance, regulates defensive engagement, and emphasizes sincere repentance."
+    },
+    "10": {
+        "name": "Yunus",
+        "page": 290,
+        "arabicName": "يونس",
+        "nameMeaning": "Jonah",
+        "numberOfAyah": 109,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Explores divine providence, cosmic order, validation of prophetic revelation, and historical lessons from past civilizations."
+    },
+    "11": {
+        "name": "Hud",
+        "page": 310,
+        "arabicName": "هود",
+        "nameMeaning": "Hud",
+        "numberOfAyah": 123,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Presents historical accounts of early prophets sent to stubborn nations, reinforcing themes of perseverance and divine justice."
+    },
+    "12": {
+        "name": "Yusuf",
+        "page": 330,
+        "arabicName": "يوسف",
+        "nameMeaning": "Joseph",
+        "numberOfAyah": 111,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Narrates the complete life story of Prophet Joseph, illustrating divine destiny, moral integrity, patience, and eventual triumph over adversity."
+    },
+    "13": {
+        "name": "Ar-Rad",
+        "page": 348,
+        "arabicName": "الرعد",
+        "nameMeaning": "The Thunder",
+        "numberOfAyah": 43,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Examines natural phenomena as manifestations of divine power, spiritual truth, cosmic balance, and human accountability."
+    },
+    "14": {
+        "name": "Ibrahim",
+        "page": 357,
+        "arabicName": "إبراهيم",
+        "nameMeaning": "Abraham",
+        "numberOfAyah": 52,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Focuses on leading humanity from spiritual darkness into light, the legacy of Prophet Abraham, gratitude, and the collapse of oppressive powers."
+    },
+    "15": {
+        "name": "Al-Hijr",
+        "page": 366,
+        "arabicName": "الحجر",
+        "nameMeaning": "The Rocky Tract",
+        "numberOfAyah": 99,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Guarantees divine preservation of revelation, recounts human creation, details Satan's rebellion, and warns transgressors."
+    },
+    "16": {
+        "name": "An-Nahl",
+        "page": 374,
+        "arabicName": "النحل",
+        "nameMeaning": "The Bee",
+        "numberOfAyah": 128,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Catalogues ecological signs and divine favors—including the intricate behavior of bees—as evidence of monotheism, urging justice and gratitude."
+    },
+    "17": {
+        "name": "Bani Israel",
+        "page": 395,
+        "arabicName": "الإسراء",
+        "nameMeaning": "The Night Journey",
+        "numberOfAyah": 111,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Commences with the Night Journey of the Prophet, outlining foundational social ethics, filial responsibility, and historical cycles of Israel."
+    },
+    "18": {
+        "name": "Al-Kahf",
+        "page": 410,
+        "arabicName": "الكهف",
+        "nameMeaning": "The Cave",
+        "numberOfAyah": 110,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Presents four allegorical narratives addressing trials of faith, material wealth, esoteric knowledge, and temporal authority."
+    },
+    "19": {
+        "name": "Maryam",
+        "page": 427,
+        "arabicName": "مريم",
+        "nameMeaning": "Mary",
+        "numberOfAyah": 98,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Recounts the miraculous births of John and Jesus, affirming Mary's devotion, divine compassion, and pure monotheism."
+    },
+    "20": {
+        "name": "Ta Ha",
+        "page": 437,
+        "arabicName": "طه",
+        "nameMeaning": "Ta-Ha",
+        "numberOfAyah": 135,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Provides an extended narrative of Prophet Moses, his confrontation with Pharaoh, the exodus, and guidance on spiritual mindfulness."
+    },
+    "21": {
+        "name": "Al-Anbiya",
+        "page": 451,
+        "arabicName": "الأنبياء",
+        "nameMeaning": "The Prophets",
+        "numberOfAyah": 112,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Underscores the continuity of prophetic messages across history, cosmic creation, imminent eschatological judgment, and divine deliverance."
+    },
+    "22": {
+        "name": "Al-Hajj",
+        "page": 464,
+        "arabicName": "الحج",
+        "nameMeaning": "The Pilgrimage",
+        "numberOfAyah": 78,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Details the rituals and spiritual purpose of Hajj, sanctions defensive combat, and affirms resurrection and universal submission to God."
+    },
+    "23": {
+        "name": "Al-Mu'minun",
+        "page": 479,
+        "arabicName": "المؤمنون",
+        "nameMeaning": "The Believers",
+        "numberOfAyah": 118,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Outlines essential psychological and behavioral traits of true believers, stages of human embryonic development, and final judgment."
+    },
+    "24": {
+        "name": "An-Nur",
+        "page": 489,
+        "arabicName": "النور",
+        "nameMeaning": "The Light",
+        "numberOfAyah": 64,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Establishes societal modesty standards, laws against defamation, domestic privacy rules, and contains the Verse of Light."
+    },
+    "25": {
+        "name": "Al-Furqan",
+        "page": 503,
+        "arabicName": "الفرقان",
+        "nameMeaning": "The Criterion",
+        "numberOfAyah": 77,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Defends the authenticity of revelation against skepticism, contrasts spiritual light and darkness, and characterizes the servants of God."
+    },
+    "26": {
+        "name": "Ash-Shuara",
+        "page": 513,
+        "arabicName": "الشعراء",
+        "nameMeaning": "The Poets",
+        "numberOfAyah": 227,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Illustrates how ancient societies repeatedly rejected prophetic guidance, contrasting divine revelation with speculative poetic rhetoric."
+    },
+    "27": {
+        "name": "An-Naml",
+        "page": 527,
+        "arabicName": "النمل",
+        "nameMeaning": "The Ants",
+        "numberOfAyah": 93,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Focuses on divine wisdom granted to Solomon, his interactions with the Queen of Sheba, and God's control over nature."
+    },
+    "28": {
+        "name": "Al-Qasas",
+        "page": 539,
+        "arabicName": "القصص",
+        "nameMeaning": "The Stories",
+        "numberOfAyah": 88,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Examines the early life of Moses, divine intervention on behalf of the oppressed, and the downfall of Korah due to arrogance."
+    },
+    "29": {
+        "name": "Al-Ankabut",
+        "page": 554,
+        "arabicName": "العنكبوت",
+        "nameMeaning": "The Spider",
+        "numberOfAyah": 69,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Explores spiritual testing, endurance under trial, filial boundaries, and uses the spider's fragile web as an allegory for false reliance."
+    },
+    "30": {
+        "name": "Ar-Rum",
+        "page": 564,
+        "arabicName": "الروم",
+        "nameMeaning": "The Romans",
+        "numberOfAyah": 60,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Foretells historical geopolitical shifts between the Byzantine and Sasanian empires, linking human history to cosmic divine signs."
+    },
+    "31": {
+        "name": "Luqman",
+        "page": 573,
+        "arabicName": "لقمان",
+        "nameMeaning": "Luqman",
+        "numberOfAyah": 34,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Presents parental wisdom regarding monotheism, humility, prayer, social conduct, and the limits of human knowledge regarding the unseen."
+    },
+    "32": {
+        "name": "As-Sajdah",
+        "page": 579,
+        "arabicName": "السجدة",
+        "nameMeaning": "The Prostration",
+        "numberOfAyah": 30,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Reaffirms divine creation, revelation integrity, physical resurrection, night devotion, and the divergence between believers and transgressors."
+    },
+    "33": {
+        "name": "Al-Ahzab",
+        "page": 583,
+        "arabicName": "الأحزاب",
+        "nameMeaning": "The Combined Forces",
+        "numberOfAyah": 73,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Addresses the Battle of the Trench, social and legal restructuring of domestic relations, adoption regulations, and covenants."
+    },
+    "34": {
+        "name": "Saba",
+        "page": 597,
+        "arabicName": "سبأ",
+        "nameMeaning": "Sheba",
+        "numberOfAyah": 54,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Demonstrates divine omniscience through the kingdoms of David, Solomon, and Sheba, warning against ingratitude and pride."
+    },
+    "35": {
+        "name": "Fatir",
+        "page": 605,
+        "arabicName": "فاطر",
+        "nameMeaning": "The Originator",
+        "numberOfAyah": 45,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Praises God as the primary Creator of heaven and earth, controller of angelic forces, and regulator of cosmic and biological sustenance."
+    },
+    "36": {
+        "name": "Ya Seen",
+        "page": 613,
+        "arabicName": "يس",
+        "nameMeaning": "Ya-Sin",
+        "numberOfAyah": 83,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Serves as a structural cornerstone of Quranic theology, focusing on prophetic authority, cosmic order, death, and resurrection."
+    },
+    "37": {
+        "name": "As-Saffat",
+        "page": 620,
+        "arabicName": "الصافات",
+        "nameMeaning": "Those Set in Ranks",
+        "numberOfAyah": 182,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Affirms monotheism, angelic hierarchies, Abraham's willingness to sacrifice his son, and descriptions of eschatological realities."
+    },
+    "38": {
+        "name": "Saad",
+        "page": 630,
+        "arabicName": "ص",
+        "nameMeaning": "The Letter Sad",
+        "numberOfAyah": 88,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Focuses on steadfastness under adversity through the stories of David, Solomon, and Job, concluding with Adam's creation."
+    },
+    "39": {
+        "name": "Az-Zumar",
+        "page": 637,
+        "arabicName": "الزمر",
+        "nameMeaning": "The Troops",
+        "numberOfAyah": 75,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Emphasizes sincere spiritual devotion, rejection of idolatrous intercession, vastness of divine mercy, and final judgment."
+    },
+    "40": {
+        "name": "Ghafir or Al-Mumin",
+        "page": 649,
+        "arabicName": "غافر",
+        "nameMeaning": "The Forgiver",
+        "numberOfAyah": 85,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Initiates the Ha-Mim series, addressing divine forgiveness, historical arrogance, and the narrative of the secret believer in Pharaoh's court."
+    },
+    "41": {
+        "name": "Fussilat or Ha Meem As-Sajdah",
+        "page": 661,
+        "arabicName": "فصلت",
+        "nameMeaning": "Explained in Detail",
+        "numberOfAyah": 54,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Elaborates on revelation clarity, cosmic creation phases, historical downfalls of ancient tribes, and divine signs in the universe."
+    },
+    "42": {
+        "name": "Ash-Shu'ra",
+        "page": 670,
+        "arabicName": "الشورى",
+        "nameMeaning": "The Consultation",
+        "numberOfAyah": 53,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Establishes institutional consultation (Shura), universal prophetic theology, divine providence, and modes of divine revelation."
+    },
+    "43": {
+        "name": "Az-Zukhruf",
+        "page": 679,
+        "arabicName": "الزخرف",
+        "nameMeaning": "Ornaments of Gold",
+        "numberOfAyah": 89,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Critiques material vanity and unquestioned cultural traditions, reaffirming monotheistic legacies of Abraham and Jesus."
+    },
+    "44": {
+        "name": "Ad-Dukhan",
+        "page": 688,
+        "arabicName": "الدخان",
+        "nameMeaning": "The Smoke",
+        "numberOfAyah": 59,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Warns of eschatological smoke and retribution, citing Pharaoh's destruction and the purposeful design of creation."
+    },
+    "45": {
+        "name": "Al-Jathiya",
+        "page": 693,
+        "arabicName": "الجاثية",
+        "nameMeaning": "The Crouching",
+        "numberOfAyah": 37,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Presents natural signs of divine order, legal regulation, and depictions of nations kneeling before divine judgment."
+    },
+    "46": {
+        "name": "Al-Ahqaf",
+        "page": 699,
+        "arabicName": "الأحقاف",
+        "nameMeaning": "Sandhills",
+        "numberOfAyah": 35,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Set in the sandhills of Ahqaf, details Prophet Hud's mission, moral duties to parents, and jinn acknowledging Quranic truth."
+    },
+    "47": {
+        "name": "Muhammad",
+        "page": 706,
+        "arabicName": "محمد",
+        "nameMeaning": "Muhammad",
+        "numberOfAyah": 38,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Contrasts belief and disbelief, codifies rules for defensive engagement, and demands psychological and financial commitment to community welfare."
+    },
+    "48": {
+        "name": "Al-Fath",
+        "page": 712,
+        "arabicName": "الفتح",
+        "nameMeaning": "The Victory",
+        "numberOfAyah": 29,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Frames the Treaty of Hudaybiyyah as a diplomatic victory, commending believer fidelity, tranquility, and community growth."
+    },
+    "49": {
+        "name": "Al-Hujurat",
+        "page": 718,
+        "arabicName": "الحجرات",
+        "nameMeaning": "The Rooms",
+        "numberOfAyah": 18,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Establishes social protocols, prohibiting defamation, backbiting, and racial prejudice while affirming universal human equality."
+    },
+    "50": {
+        "name": "Qaf",
+        "page": 723,
+        "arabicName": "ق",
+        "nameMeaning": "The Letter Qaf",
+        "numberOfAyah": 45,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Focuses on human mortality, bodily resurrection, continuous recording of human thoughts, creation, and judgment."
+    },
+    "51": {
+        "name": "Adh-Dhariyat",
+        "page": 727,
+        "arabicName": "الذاريات",
+        "nameMeaning": "Winnowing Winds",
+        "numberOfAyah": 60,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Swears by natural phenomena to affirm divine sustenance, historical accounts of angels visiting Abraham, and the core purpose of creation."
+    },
+    "52": {
+        "name": "At-Tur",
+        "page": 731,
+        "arabicName": "الطور",
+        "nameMeaning": "The Mount",
+        "numberOfAyah": 49,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Uses oaths sworn by Mount Sinai to warn rejecters and describe the reuniting of righteous families in Paradise."
+    },
+    "53": {
+        "name": "An-Najm",
+        "page": 734,
+        "arabicName": "النجم",
+        "nameMeaning": "The Star",
+        "numberOfAyah": 62,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Describes the celestial ascension of the Prophet, refutes idol veneration, and emphasizes individual accountability."
+    },
+    "54": {
+        "name": "Al-Qamar",
+        "page": 738,
+        "arabicName": "القمر",
+        "nameMeaning": "The Moon",
+        "numberOfAyah": 55,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Recounts the sign of the moon splitting and past destructions, repeating that the Quran is made accessible for reflection."
+    },
+    "55": {
+        "name": "Ar-Rahman",
+        "page": 742,
+        "arabicName": "الرحمن",
+        "nameMeaning": "The Beneficent",
+        "numberOfAyah": 78,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Exalts divine compassion and cosmic order, utilizing a repeating refrain to challenge humanity and jinn regarding divine favors."
+    },
+    "56": {
+        "name": "Al-Waqiah",
+        "page": 747,
+        "arabicName": "الواقعة",
+        "nameMeaning": "The Inevitable",
+        "numberOfAyah": 96,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Categorizes humanity on the Day of Judgment into three distinct groups (the Foremost, the Companions of the Right, and the Companions of the Left)."
+    },
+    "57": {
+        "name": "Al-Hadeed",
+        "page": 752,
+        "arabicName": "الحديد",
+        "nameMeaning": "The Iron",
+        "numberOfAyah": 29,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Urges spending in the path of God, balancing societal material strength (symbolized by iron) with spiritual humility."
+    },
+    "58": {
+        "name": "Al-Mujadalah",
+        "page": 759,
+        "arabicName": "المجادلة",
+        "nameMeaning": "Pleading Woman",
+        "numberOfAyah": 22,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Addresses a woman's legal petition, abolishing abusive pre-Islamic divorce practices and regulating assembly etiquette."
+    },
+    "59": {
+        "name": "Al-Hashr",
+        "page": 763,
+        "arabicName": "الحشر",
+        "nameMeaning": "The Gathering",
+        "numberOfAyah": 24,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Details the expulsion of hostile factions, economic principles governing communal funds (Fay), and concludes with divine attributes."
+    },
+    "60": {
+        "name": "Al-Mumtahanah",
+        "page": 768,
+        "arabicName": "الممتحنة",
+        "nameMeaning": "Examined Woman",
+        "numberOfAyah": 13,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Establishes criteria for international relations, testing emigrant allegiance, and drawing lessons from Abraham's stance."
+    },
+    "61": {
+        "name": "As-Saff",
+        "page": 772,
+        "arabicName": "الصف",
+        "nameMeaning": "The Ranks",
+        "numberOfAyah": 14,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Stresses alignment between profession and action, organizational solidarity, and historical continuity of prophetic missions."
+    },
+    "62": {
+        "name": "Al-Jumu'ah",
+        "page": 775,
+        "arabicName": "الجمعة",
+        "nameMeaning": "Friday Congregation",
+        "numberOfAyah": 11,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Mandates attendance at Friday congregational prayers, criticizing commercial distractions during spiritual worship."
+    },
+    "63": {
+        "name": "Al-Munafiqun",
+        "page": 777,
+        "arabicName": "المنافقون",
+        "nameMeaning": "The Hypocrites",
+        "numberOfAyah": 11,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Exposes the deceitful rhetoric and psychological traits of hypocrites, warning against wealth distracting from spiritual duty."
+    },
+    "64": {
+        "name": "At-Taghabun",
+        "page": 779,
+        "arabicName": "التغابن",
+        "nameMeaning": "Mutual Loss & Gain",
+        "numberOfAyah": 18,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Frames the Day of Judgment as a day of ultimate gain or loss, calling for charitable stewardship and household harmony."
+    },
+    "65": {
+        "name": "At-Talaq",
+        "page": 782,
+        "arabicName": "الطلاق",
+        "nameMeaning": "The Divorce",
+        "numberOfAyah": 12,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Codifies procedural laws for marital dissolution, waiting periods, financial maintenance, and child guardianship."
+    },
+    "66": {
+        "name": "At-Tahrim",
+        "page": 785,
+        "arabicName": "التحريم",
+        "nameMeaning": "The Prohibition",
+        "numberOfAyah": 12,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Deals with household dynamics within the Prophet's family, emphasizing sincere repentance and individual responsibility."
+    },
+    "67": {
+        "name": "Al-Mulk",
+        "page": 789,
+        "arabicName": "الملك",
+        "nameMeaning": "The Sovereignty",
+        "numberOfAyah": 30,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Demonstrates absolute divine dominion over life, death, and cosmological design, challenging humans to find flaws in creation."
+    },
+    "68": {
+        "name": "Al-Qalam",
+        "page": 792,
+        "arabicName": "القلم",
+        "nameMeaning": "The Pen",
+        "numberOfAyah": 52,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Vindicates the Prophet's character, uses the allegory of the blighted garden to warn against stinginess, and urges patience."
+    },
+    "69": {
+        "name": "Al-Haqqah",
+        "page": 796,
+        "arabicName": "الحاقة",
+        "nameMeaning": "Inevitable Reality",
+        "numberOfAyah": 52,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Portrays the inescapable reality of Judgment Day, historical destructions of deniers, and the absolute divine origin of the text."
+    },
+    "70": {
+        "name": "Al-Ma'rij",
+        "page": 799,
+        "arabicName": "المعارج",
+        "nameMeaning": "Ascending Stairways",
+        "numberOfAyah": 44,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Describes spiritual ascension paths, the immense scale of Judgment Day, and moral character traits necessary for salvation."
+    },
+    "71": {
+        "name": "Nuh",
+        "page": 802,
+        "arabicName": "نوح",
+        "nameMeaning": "Noah",
+        "numberOfAyah": 28,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Focuses on Noah's centennial mission, his persistent efforts to guide his community, and his prayers for divine justice."
+    },
+    "72": {
+        "name": "Al-Jinn",
+        "page": 805,
+        "arabicName": "الجن",
+        "nameMeaning": "The Jinn",
+        "numberOfAyah": 28,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Recounts a group of jinn listening to the Quran, embracing monotheism, and disavowing polytheism."
+    },
+    "73": {
+        "name": "Al-Muzzammil",
+        "page": 808,
+        "arabicName": "المزمل",
+        "nameMeaning": "Enshrouded One",
+        "numberOfAyah": 20,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Prescribes night vigil prayers (Tahajjud), measured recitation of the Quran, and steadfastness in spiritual development."
+    },
+    "74": {
+        "name": "Al-Muddaththir",
+        "page": 810,
+        "arabicName": "المدثر",
+        "nameMeaning": "Cloaked One",
+        "numberOfAyah": 56,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Directs the Prophet to arise and commence public preaching, emphasizing personal purity and spiritual vigilance."
+    },
+    "75": {
+        "name": "Al-Qiyamah",
+        "page": 813,
+        "arabicName": "القيامة",
+        "nameMeaning": "The Resurrection",
+        "numberOfAyah": 40,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Addresses physical resurrection, human self-examination, textual preservation, and the inevitability of physical death."
+    },
+    "76": {
+        "name": "Ad-Dahr or Al-Insan",
+        "page": 815,
+        "arabicName": "الإنسان",
+        "nameMeaning": "Man",
+        "numberOfAyah": 31,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Explores human origin, moral choice, selfless charity performed for divine pleasure, and heavenly rewards."
+    },
+    "77": {
+        "name": "Al-Mursalat",
+        "page": 818,
+        "arabicName": "المرسلات",
+        "nameMeaning": "Winds Sent Forth",
+        "numberOfAyah": 50,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Swears by natural forces to affirm the Day of Decision, repeating a stark warning refrain to those who reject truth."
+    },
+    "78": {
+        "name": "An-Naba",
+        "page": 821,
+        "arabicName": "النبأ",
+        "nameMeaning": "The Tidings",
+        "numberOfAyah": 40,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Addresses skepticism regarding resurrection, detailing earth's natural balance and eschatological destinations."
+    },
+    "79": {
+        "name": "An-Naziat",
+        "page": 822,
+        "arabicName": "النازعات",
+        "nameMeaning": "Soul Extractors",
+        "numberOfAyah": 46,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Depicts angelic forces extracting souls, Moses' confrontation with Pharaoh, and the sudden arrival of the final hour."
+    },
+    "80": {
+        "name": "Abasa",
+        "page": 824,
+        "arabicName": "عبس",
+        "nameMeaning": "He Frowned",
+        "numberOfAyah": 42,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Admonishes prioritizing worldly elites over humble seekers of truth, highlighting human dependency on divine provision."
+    },
+    "81": {
+        "name": "At-Takwir",
+        "page": 826,
+        "arabicName": "التكوير",
+        "nameMeaning": "The Overthrowing",
+        "numberOfAyah": 29,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Vividly depicts cosmic dissolution at the end of time while asserting the authenticity of prophetic inspiration."
+    },
+    "82": {
+        "name": "Al-Infitar",
+        "page": 827,
+        "arabicName": "الانفطار",
+        "nameMeaning": "The Cleaving",
+        "numberOfAyah": 19,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Describes the shattering of celestial bodies, grave awakenings, and guardian angels recording human actions."
+    },
+    "83": {
+        "name": "Al-Mutaffifeen",
+        "page": 828,
+        "arabicName": "المطففين",
+        "nameMeaning": "Defrauders",
+        "numberOfAyah": 36,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Condemns economic exploitation and commercial dishonesty, contrasting the records of the wicked (Sijjin) and righteous (Illiyyun)."
+    },
+    "84": {
+        "name": "Al-Inshiqaq",
+        "page": 830,
+        "arabicName": "الانشقاق",
+        "nameMeaning": "Splitting Open",
+        "numberOfAyah": 25,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Portrays the splitting of the sky, humanity's journey toward divine judgment, and the distribution of personal records."
+    },
+    "85": {
+        "name": "Al-Buruj",
+        "page": 831,
+        "arabicName": "البروج",
+        "nameMeaning": "Mansions of Stars",
+        "numberOfAyah": 22,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Recounts the story of the persecuted martyrs of the ditch, affirming divine vigilance and the preservation of the Quran."
+    },
+    "86": {
+        "name": "At-Tariq",
+        "page": 832,
+        "arabicName": "الطارق",
+        "nameMeaning": "The Night Comer",
+        "numberOfAyah": 17,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Swears by celestial bodies, pointing to human biological creation as evidence of God's power to reconstruct life."
+    },
+    "87": {
+        "name": "Al-Ala",
+        "page": 833,
+        "arabicName": "الأعلى",
+        "nameMeaning": "The Most High",
+        "numberOfAyah": 19,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Exhorts glorification of the Creator, affirming that lasting success belongs to those who purify their souls."
+    },
+    "88": {
+        "name": "Al-Ghashiyah",
+        "page": 834,
+        "arabicName": "الغاشية",
+        "nameMeaning": "The Overwhelming",
+        "numberOfAyah": 26,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Contrasts the anguish of those who reject divine truth with the contentment of the righteous in Paradise."
+    },
+    "89": {
+        "name": "Al-Fajr",
+        "page": 835,
+        "arabicName": "الفجر",
+        "nameMeaning": "The Dawn",
+        "numberOfAyah": 30,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Cites the collapse of ancient powers (Ad, Thamud, Pharaoh) due to tyranny, concluding with an invitation to the tranquil soul."
+    },
+    "90": {
+        "name": "Al-Balad",
+        "page": 837,
+        "arabicName": "البلد",
+        "nameMeaning": "The City",
+        "numberOfAyah": 20,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Defines life as a moral struggle, urging the liberation of slaves, feeding of the hungry, and support for the vulnerable."
+    },
+    "91": {
+        "name": "Ash-Shams",
+        "page": 838,
+        "arabicName": "الشمس",
+        "nameMeaning": "The Sun",
+        "numberOfAyah": 15,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Swears by natural cycles to demonstrate that spiritual success is achieved by purifying the soul, citing the downfall of Thamud."
+    },
+    "92": {
+        "name": "Al-Layl",
+        "page": 839,
+        "arabicName": "الليل",
+        "nameMeaning": "The Night",
+        "numberOfAyah": 21,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Contrasts individuals who give charitably with those who hoard wealth, detailing their differing spiritual outcomes."
+    },
+    "93": {
+        "name": "Ad-Duha",
+        "page": 840,
+        "arabicName": "الضحى",
+        "nameMeaning": "Morning Hours",
+        "numberOfAyah": 11,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Provides solace to the Prophet during a pause in revelation, promising ultimate victory and directing care for orphans."
+    },
+    "94": {
+        "name": "Ash-Sharh",
+        "page": 840,
+        "arabicName": "الشرح",
+        "nameMeaning": "The Relief",
+        "numberOfAyah": 8,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Reassures that relief accompanies every hardship, encouraging continuous effort in worship and reliance on God."
+    },
+    "95": {
+        "name": "At-Teen",
+        "page": 841,
+        "arabicName": "التين",
+        "nameMeaning": "The Fig",
+        "numberOfAyah": 8,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Swears by sacred lands, affirming that human beings were created in the highest stature, degraded only by moral corruption."
+    },
+    "96": {
+        "name": "Al-Alaq",
+        "page": 841,
+        "arabicName": "العلق",
+        "nameMeaning": "The Clot",
+        "numberOfAyah": 19,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Contains the initial verses of revelation ('Read'), highlighting human origin, pursuit of knowledge, and opposition to tyranny."
+    },
+    "97": {
+        "name": "Al-Qadr",
+        "page": 842,
+        "arabicName": "القدر",
+        "nameMeaning": "Power / Destiny",
+        "numberOfAyah": 5,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Extols the Night of Decree (Laylat al-Qadr), marking the commencement of revelation as superior to a thousand months."
+    },
+    "98": {
+        "name": "Al-Bayyinah",
+        "page": 842,
+        "arabicName": "البينة",
+        "nameMeaning": "Clear Proof",
+        "numberOfAyah": 8,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Defines the clear evidence brought by the Prophet, outlining core monotheistic obligations of prayer, charity, and sincerity."
+    },
+    "99": {
+        "name": "Az-Zilzal",
+        "page": 843,
+        "arabicName": "الزلزلة",
+        "nameMeaning": "The Earthquake",
+        "numberOfAyah": 8,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Portrays the earth's final tremor on Judgment Day, when all human deeds down to an atom's weight will be laid bare."
+    },
+    "100": {
+        "name": "Al-Adiyat",
+        "page": 844,
+        "arabicName": "العاديات",
+        "nameMeaning": "The Coursers",
+        "numberOfAyah": 11,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Uses imagery of galloping warhorses to illustrate human ingratitude and excessive attachment to worldly wealth."
+    },
+    "101": {
+        "name": "Al-Qari'ah",
+        "page": 845,
+        "arabicName": "القارعة",
+        "nameMeaning": "The Calamity",
+        "numberOfAyah": 11,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Depicts the striking calamity of the Day of Judgment, where human deeds are weighed on divine scales."
+    },
+    "102": {
+        "name": "At-Takathur",
+        "page": 845,
+        "arabicName": "التكاثر",
+        "nameMeaning": "Material Rivalry",
+        "numberOfAyah": 8,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Censures material accumulation and status competition that distract people until they enter their graves."
+    },
+    "103": {
+        "name": "Al-Asr",
+        "page": 846,
+        "arabicName": "العصر",
+        "nameMeaning": "Declining Day",
+        "numberOfAyah": 3,
+        "revelationType": "Makkahiya",
+        "surahSummary": "States that humanity is in a state of loss except for those who hold faith, perform righteous deeds, and encourage truth and patience."
+    },
+    "104": {
+        "name": "Al-Humazah",
+        "page": 846,
+        "arabicName": "الهمزة",
+        "nameMeaning": "The Traducer",
+        "numberOfAyah": 9,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Condemns slandering, backbiting, and the false belief that accumulated wealth grants immortality."
+    },
+    "105": {
+        "name": "Al-Feel",
+        "page": 846,
+        "arabicName": "الفيل",
+        "nameMeaning": "The Elephant",
+        "numberOfAyah": 5,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Recounts the historical intervention protecting Mecca from Abrahah's army through flocks of birds."
+    },
+    "106": {
+        "name": "Quraysh",
+        "page": 847,
+        "arabicName": "قريش",
+        "nameMeaning": "Quraysh",
+        "numberOfAyah": 4,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Exhorts the Quraysh tribe to worship the Lord of the Kaaba in gratitude for economic security and protection."
+    },
+    "107": {
+        "name": "Al-Ma'un",
+        "page": 847,
+        "arabicName": "الماعون",
+        "nameMeaning": "Small Kindnesses",
+        "numberOfAyah": 7,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Exposes religious hypocrisy that neglects orphans, performs ritual prayer insincerely, and refuses basic neighborly assistance."
+    },
+    "108": {
+        "name": "Al-Kawthar",
+        "page": 848,
+        "arabicName": "الكوثر",
+        "nameMeaning": "Abundance",
+        "numberOfAyah": 3,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Assures the Prophet of divine abundance (Al-Kawthar), instructing devotional prayer and declaring his detractors cut off."
+    },
+    "109": {
+        "name": "Al-Kafirun",
+        "page": 848,
+        "arabicName": "الكافرون",
+        "nameMeaning": "Disbelievers",
+        "numberOfAyah": 6,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Establishes a clear theological boundary between Islamic monotheism and polytheism, concluding with 'To you be your religion, and to me my religion'."
+    },
+    "110": {
+        "name": "An-Nasr",
+        "page": 848,
+        "arabicName": "النصر",
+        "nameMeaning": "Divine Support",
+        "numberOfAyah": 3,
+        "revelationType": "Madhiniya",
+        "surahSummary": "Foretells widespread acceptance of Islam, instructing the Prophet to praise God and seek forgiveness as his mission nears completion."
+    },
+    "111": {
+        "name": "Al-Masad",
+        "page": 849,
+        "arabicName": "المسد",
+        "nameMeaning": "Palm Fiber",
+        "numberOfAyah": 5,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Censures Abu Lahab and his wife for their active opposition to the prophetic message, declaring their wealth useless."
+    },
+    "112": {
+        "name": "Al-Ikhlas",
+        "page": 849,
+        "arabicName": "الإخلاص",
+        "nameMeaning": "Sincerity",
+        "numberOfAyah": 4,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Defines absolute monotheism (Tawhid), affirming God's uncaused oneness, self-sufficiency, and absolute incomparability."
+    },
+    "113": {
+        "name": "Al-Falaq",
+        "page": 849,
+        "arabicName": "الفلق",
+        "nameMeaning": "The Daybreak",
+        "numberOfAyah": 5,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Invocative prayer seeking protection in the Lord of daybreak from external harms, dark forces, sorcery, and envy."
+    },
+    "114": {
+        "name": "An-Nas",
+        "page": 850,
+        "arabicName": "الناس",
+        "nameMeaning": "Mankind",
+        "numberOfAyah": 6,
+        "revelationType": "Makkahiya",
+        "surahSummary": "Invocative prayer seeking refuge in the Lord, King, and God of humanity from insidious psychological whisperings."
+    }
+}

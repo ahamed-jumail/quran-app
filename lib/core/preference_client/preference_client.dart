@@ -62,4 +62,29 @@ class PreferencesClient {
     await prefs.setInt('quranLastPage', page);
     await prefs.setInt('quranTotalPages', totalPages);
   }
+
+  //****************************** surah-interactions **************************//
+  Set<int> getLikedSurahNumbers() =>
+      (prefs.getStringList('likedSurahNumbers') ?? const <String>[])
+          .map(int.parse)
+          .toSet();
+
+  Future<void> setLikedSurahNumbers(Set<int> numbers) async {
+    await prefs.setStringList(
+      'likedSurahNumbers',
+      numbers.map((int n) => n.toString()).toList(),
+    );
+  }
+
+  Set<int> getBookmarkedSurahNumbers() =>
+      (prefs.getStringList('bookmarkedSurahNumbers') ?? const <String>[])
+          .map(int.parse)
+          .toSet();
+
+  Future<void> setBookmarkedSurahNumbers(Set<int> numbers) async {
+    await prefs.setStringList(
+      'bookmarkedSurahNumbers',
+      numbers.map((int n) => n.toString()).toList(),
+    );
+  }
 }
