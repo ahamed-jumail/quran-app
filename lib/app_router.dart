@@ -6,6 +6,7 @@ import 'models/quran_reader_route_args.dart';
 import 'models/surah_index_entry.dart';
 import 'views/home/home_page.dart';
 import 'views/juz_index/juz_index_page.dart';
+import 'views/qiraath/quran_qirath_page.dart';
 import 'views/quran_reader/color_codes_page.dart';
 import 'views/quran_reader/quran_reader_page.dart';
 import 'views/surah_index/surah_collection_page.dart';
@@ -21,6 +22,7 @@ class RouteConstants {
   static String likedSurahsPage = 'likedSurahs';
   static String bookmarkedSurahsPage = 'bookmarkedSurahs';
   static String juzIndexPage = 'juzIndex';
+  static String quranQirathPage = 'quranQirath';
 }
 
 class GoRouterInit {
@@ -114,6 +116,14 @@ class GoRouterInit {
         pageBuilder: (BuildContext context, GoRouterState state) =>
             const MaterialPage<JuzIndexPage>(
           child: JuzIndexPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/quran-qirath',
+        name: RouteConstants.quranQirathPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<QuranQirathPage>(
+          child: QuranQirathPage(),
         ),
       ),
     ],

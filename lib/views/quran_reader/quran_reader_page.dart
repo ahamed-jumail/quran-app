@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pdfrx/pdfrx.dart';
 
+import '../../core/bloc/qiraath/qiraath_cubit.dart';
+import '../../core/bloc/qiraath/qiraath_state.dart';
 import '../../core/bloc/quran_progress/quran_progress_cubit.dart';
 import '../../core/bloc/quran_progress/quran_progress_state.dart';
 import '../../core/theme/app_colors.dart';
@@ -362,6 +364,22 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
                   ),
                   title: const Text('Tajweed Quran'),
                   actions: <Widget>[
+                    BlocBuilder<QiraathCubit, QiraathState>(
+                      builder: (BuildContext context, QiraathState state) {
+                        if (state.currentSurahNumber == null) {
+                          return const SizedBox.shrink();
+                        }
+                        return IconButton(
+                          icon: Icon(
+                            state.isPlaying
+                                ? Icons.pause_rounded
+                                : Icons.play_arrow_rounded,
+                          ),
+                          onPressed: () =>
+                              context.read<QiraathCubit>().togglePlayPause(),
+                        );
+                      },
+                    ),
                     IconButton(
                       icon: const Icon(Icons.info_outline_rounded),
                       onPressed: () => context.push('/color-codes'),

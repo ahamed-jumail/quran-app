@@ -36,7 +36,10 @@ class QuranProgressCard extends StatelessWidget {
         highlightColor: AppColors.surfaceOverlay.withValues(alpha: 0.05),
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.all(AppSpacing.lg),
+          padding: EdgeInsets.symmetric(
+            horizontal: AppSpacing.lg,
+            vertical: 12.h,
+          ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(AppRadius.lg),
             gradient: const LinearGradient(
@@ -67,150 +70,106 @@ class QuranProgressCard extends StatelessWidget {
           ),
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
-              final bool compact = constraints.maxHeight < 190;
+              final bool compact = constraints.maxHeight < 100;
 
-              final double iconSize = compact ? 48.r : 54.r;
-              final double arrowSize = compact ? 34.r : 38.r;
+              final double ringSize = compact ? 34.r : 46.r;
+              final double arrowSize = compact ? 26.r : 34.r;
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              return Row(
                 children: <Widget>[
-                  // Top row.
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        height: iconSize,
-                        width: iconSize,
-                        decoration: BoxDecoration(
-                          color: AppColors.surfaceOverlay,
-                          borderRadius: BorderRadius.circular(AppRadius.md),
-                          border: Border.all(
-                            color: AppColors.gold.withValues(alpha: 0.25),
-                          ),
-                          boxShadow: <BoxShadow>[
-                            BoxShadow(
-                              color: AppColors.gold.withValues(alpha: 0.22),
-                              blurRadius: 14.r,
-                              offset: Offset(0, 5.h),
-                            ),
-                          ],
-                        ),
-                        child: Icon(
-                          Icons.menu_book_rounded,
-                          color: AppColors.gold,
-                          size: compact ? 24.r : 27.r,
-                        ),
-                      ),
-
-                      const Spacer(),
-
-                      Container(
-                        height: arrowSize,
-                        width: arrowSize,
-                        decoration: BoxDecoration(
-                          color: AppColors.surfaceOverlay,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: AppColors.gold.withValues(alpha: 0.3),
-                          ),
-                        ),
-                        child: Icon(
-                          Icons.arrow_forward_rounded,
-                          color: AppColors.gold,
-                          size: compact ? 17.r : 19.r,
-                        ),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: compact ? 7.h : 10.h),
-
-                  // Bismillah.
                   SizedBox(
-                    width: double.infinity,
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
-                        textDirection: TextDirection.rtl,
-                        maxLines: 1,
-                        softWrap: false,
-                        style: TextStyle(
-                          fontSize: compact ? 16.sp : 18.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.surfaceOverlay,
-                          height: 1.45,
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(height: compact ? 2.h : 4.h),
-
-                  // Title.
-                  Text(
-                    title,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: textTheme.fraunces20SemiBold.copyWith(
-                      color: AppColors.surfaceOverlay,
-                      fontSize: compact ? 19.sp : 20.sp,
-                      height: 1.1,
-                    ),
-                  ),
-
-                  SizedBox(height: compact ? 2.h : 4.h),
-
-                  // Subtitle.
-                  Text(
-                    subtitle,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: textTheme.manrope13Regular.copyWith(
-                      color: AppColors.surfaceOverlay.withValues(alpha: 0.72),
-                      fontSize: compact ? 12.sp : 13.sp,
-                    ),
-                  ),
-
-                  SizedBox(height: compact ? 7.h : 11.h),
-
-                  // Progress indicator.
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Container(
-                          height: compact ? 2.5.h : 3.h,
-                          decoration: BoxDecoration(
-                            color: AppColors.surfaceOverlay.withValues(
-                              alpha: 0.16,
-                            ),
-                            borderRadius: BorderRadius.circular(10.r),
+                    height: ringSize,
+                    width: ringSize,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: <Widget>[
+                        CircularProgressIndicator(
+                          value: progress.clamp(0.0, 1.0),
+                          strokeWidth: compact ? 3.r : 3.5.r,
+                          backgroundColor: AppColors.surfaceOverlay.withValues(
+                            alpha: 0.18,
                           ),
-                          child: FractionallySizedBox(
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                            AppColors.surfaceOverlay,
+                          ),
+                        ),
+                        Text(
+                          progressLabel,
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          style: textTheme.manrope10Medium.copyWith(
+                            color: AppColors.surfaceOverlay,
+                            fontSize: compact ? 7.5.sp : 9.5.sp,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: AppSpacing.md),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        // Title. FittedBox rather than ellipsis so the full
+                        // title always reads, just scaled down if the row
+                        // (shared with the ring and arrow button) is tight.
+                        SizedBox(
+                          width: double.infinity,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
                             alignment: Alignment.centerLeft,
-                            widthFactor: progress.clamp(0.0, 1.0),
-                            child: Container(
-                              decoration: BoxDecoration(
+                            child: Text(
+                              title,
+                              maxLines: 1,
+                              softWrap: false,
+                              style: textTheme.fraunces20SemiBold.copyWith(
                                 color: AppColors.surfaceOverlay,
-                                borderRadius: BorderRadius.circular(10.r),
+                                fontSize: compact ? 15.sp : 19.sp,
+                                height: 1.1,
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(width: AppSpacing.sm),
-                      Text(
-                        progressLabel,
-                        style: textTheme.manrope10Medium.copyWith(
-                          color: AppColors.surfaceOverlay.withValues(
-                            alpha: 0.72,
+                        SizedBox(height: compact ? 2.h : 4.h),
+                        // Subtitle.
+                        SizedBox(
+                          width: double.infinity,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              subtitle,
+                              maxLines: 1,
+                              softWrap: false,
+                              style: textTheme.manrope13Regular.copyWith(
+                                color: AppColors.surfaceOverlay.withValues(
+                                  alpha: 0.72,
+                                ),
+                                fontSize: compact ? 10.5.sp : 13.sp,
+                              ),
+                            ),
                           ),
-                          fontSize: compact ? 10.sp : 11.sp,
                         ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: AppSpacing.sm),
+                  Container(
+                    height: arrowSize,
+                    width: arrowSize,
+                    decoration: BoxDecoration(
+                      color: AppColors.surfaceOverlay,
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColors.gold.withValues(alpha: 0.3),
                       ),
-                    ],
+                    ),
+                    child: Icon(
+                      Icons.arrow_forward_rounded,
+                      color: AppColors.gold,
+                      size: compact ? 16.r : 18.r,
+                    ),
                   ),
                 ],
               );

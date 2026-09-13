@@ -10,6 +10,7 @@ import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
 import '../../models/quran_reader_route_args.dart';
 import 'widgets/home_menu_tile.dart';
+import 'widgets/mini_qirath_player.dart';
 import 'widgets/quran_progress_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -41,7 +42,7 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: isCompactHeight ? AppSpacing.sm : AppSpacing.md),
               SizedBox(
-                height: isCompactHeight ? 170.h : 200.h,
+                height: isCompactHeight ? 70.h : 80.h,
                 child: BlocBuilder<QuranProgressCubit, QuranProgressState>(
                   builder: (BuildContext context, QuranProgressState state) {
                     final bool hasProgress =
@@ -64,7 +65,9 @@ class HomePage extends StatelessWidget {
                   },
                 ),
               ),
-              SizedBox(height: isCompactHeight ? AppSpacing.sm : 30.h),
+              SizedBox(height: isCompactHeight ? AppSpacing.sm : AppSpacing.md),
+              const MiniQirathPlayer(),
+              SizedBox(height: isCompactHeight ? AppSpacing.sm : AppSpacing.md),
               Text(
                 'QUICK ACCESS',
                 style: textTheme.manrope12SemiBold.copyWith(
@@ -109,7 +112,7 @@ class HomePage extends StatelessWidget {
                               icon: Icons.headphones_rounded,
                               label: 'Quran Qirath',
                               subtitle: 'Arabic Recitations',
-                              onTap: () {},
+                              onTap: () => context.push('/quran-qirath'),
                             ),
                           ),
                           SizedBox(width: AppSpacing.md),

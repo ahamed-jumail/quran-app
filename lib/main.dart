@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nested/nested.dart';
+import 'package:quran_audio/quran_audio.dart';
 
 import 'app.dart';
 import 'core/api_repository/api_repository.dart';
 import 'core/bloc/app_bloc/app_bloc.dart';
 import 'core/bloc/auth_bloc/auth_bloc.dart';
+import 'core/bloc/qiraath/qiraath_cubit.dart';
 import 'core/bloc/quran_progress/quran_progress_cubit.dart';
 import 'core/bloc/surah_interactions/surah_interactions_cubit.dart';
 import 'core/config/app_config.dart';
@@ -26,6 +28,7 @@ Future<void> main() async {
       ]);
 
       await ApiRepository.init();
+      await QuranAudio.init();
 
       // ✅ Flutter framework errors
       FlutterError.onError = (FlutterErrorDetails details) {
@@ -49,6 +52,7 @@ Future<void> main() async {
             BlocProvider<SurahInteractionsCubit>(
               create: (_) => SurahInteractionsCubit(),
             ),
+            BlocProvider<QiraathCubit>(create: (_) => QiraathCubit()),
           ],
           child: const App(),
         ),

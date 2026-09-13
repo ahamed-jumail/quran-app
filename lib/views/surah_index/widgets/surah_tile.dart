@@ -8,6 +8,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_dimensions.dart';
 import '../../../core/theme/app_styles.dart';
 import '../../../global_widgets/app_toast.dart';
+import '../../../global_widgets/dismiss_keyboard.dart';
 import '../../../models/surah_index_entry.dart';
 
 /// A single Surah row, shared by the Surah Index, Liked Surahs, and
@@ -21,6 +22,13 @@ class SurahTile extends StatelessWidget {
   final VoidCallback onTap;
 
   void _openActionsSheet(BuildContext context) {
+    // Otherwise, if the search field above still has focus, Android's IME
+    // reconnects to it (popping the keyboard back up) once this sheet's
+    // route is popped, regardless of Flutter's own focus state at the time
+    // it was pushed — dismissing the sheet should never resurface a search
+    // field the user already moved on from.
+    dismissKeyboard(context);
+
     final SurahInteractionsCubit cubit = context.read<SurahInteractionsCubit>();
     final bool liked = cubit.state.likedNumbers.contains(entry.number);
     final bool bookmarked = cubit.state.bookmarkedNumbers.contains(entry.number);
@@ -46,7 +54,14 @@ class SurahTile extends StatelessWidget {
           },
         );
       },
-    );
+    ).then((_) {
+      // Doing this before the sheet opens isn't enough on its own — the IME
+      // still reconnects once the sheet's route is popped. Repeating it
+      // after the sheet closes clears that too.
+      if (context.mounted) {
+        dismissKeyboard(context);
+      }
+    });
   }
 
   Future<void> _toggleLike(
