@@ -6,6 +6,11 @@ import 'models/quran_reader_route_args.dart';
 import 'models/surah_index_entry.dart';
 import 'views/home/home_page.dart';
 import 'views/juz_index/juz_index_page.dart';
+import 'views/more_info/about_app_page.dart';
+import 'views/more_info/about_quran_page.dart';
+import 'views/more_info/more_info_page.dart';
+import 'views/more_info/names_of_allah_page.dart';
+import 'views/more_info/waqf_rules_page.dart';
 import 'views/qiraath/quran_qirath_page.dart';
 import 'views/quran_reader/color_codes_page.dart';
 import 'views/quran_reader/quran_reader_page.dart';
@@ -23,6 +28,11 @@ class RouteConstants {
   static String bookmarkedSurahsPage = 'bookmarkedSurahs';
   static String juzIndexPage = 'juzIndex';
   static String quranQirathPage = 'quranQirath';
+  static String moreInfoPage = 'moreInfo';
+  static String aboutAppPage = 'aboutApp';
+  static String aboutQuranPage = 'aboutQuran';
+  static String waqfRulesPage = 'waqfRules';
+  static String namesOfAllahPage = 'namesOfAllah';
 }
 
 class GoRouterInit {
@@ -124,6 +134,46 @@ class GoRouterInit {
         pageBuilder: (BuildContext context, GoRouterState state) =>
             const MaterialPage<QuranQirathPage>(
           child: QuranQirathPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/more-info',
+        name: RouteConstants.moreInfoPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<MoreInfoPage>(
+          child: MoreInfoPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/about-app',
+        name: RouteConstants.aboutAppPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<AboutAppPage>(
+          child: AboutAppPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/about-quran',
+        name: RouteConstants.aboutQuranPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<AboutQuranPage>(
+          child: AboutQuranPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/waqf-rules',
+        name: RouteConstants.waqfRulesPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<WaqfRulesPage>(
+          child: WaqfRulesPage(),
+        ),
+      ),
+      GoRoute(
+        path: '/names-of-allah',
+        name: RouteConstants.namesOfAllahPage,
+        pageBuilder: (BuildContext context, GoRouterState state) =>
+            const MaterialPage<NamesOfAllahPage>(
+          child: NamesOfAllahPage(),
         ),
       ),
     ],

@@ -89,6 +89,9 @@ flutter:
     - assets/pdfs/tajweed_quran.pdf
     - assets/jsons/surah_index.json
     - assets/jsons/juz_index.json
+    - assets/jsons/quran_details.json
+    - assets/jsons/waqf_rules.json
+    - assets/jsons/names_of_allah.json
     - assets/icons/quran_app_icon.png
     - assets/icons/quran.png
 

@@ -419,7 +419,7 @@ class _ControlButton extends StatelessWidget {
           ),
           child: Icon(
             icon,
-            color: filled ? AppColors.surfaceBase : AppColors.gold,
+            color: filled ? AppColors.surfaceOverlay : AppColors.gold,
             size: iconSize,
           ),
         ),

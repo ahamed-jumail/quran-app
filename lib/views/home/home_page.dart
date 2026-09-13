@@ -10,7 +10,9 @@ import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
 import '../../models/quran_reader_route_args.dart';
 import 'widgets/home_menu_tile.dart';
+import 'widgets/knowledge_hub_button.dart';
 import 'widgets/mini_qirath_player.dart';
+import 'widgets/notched_corner_clip.dart';
 import 'widgets/quran_progress_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,6 +25,13 @@ class HomePage extends StatelessWidget {
     final Size screenSize = MediaQuery.sizeOf(context);
 
     final bool isCompactHeight = screenSize.height < 700;
+    final double tileGap = AppSpacing.sm;
+    final double hubButtonDiameter = 64.r;
+    final double hubButtonRadius = hubButtonDiameter / 2;
+    // The notch is cut a bit larger than the button so a ring of background
+    // stays visible between the clipped tile corners and the button itself,
+    // instead of the tiles butting right up against it.
+    final double hubNotchRadius = hubButtonRadius + AppSpacing.xs;
 
     return Scaffold(
       body: SafeArea(
@@ -68,65 +77,104 @@ class HomePage extends StatelessWidget {
               SizedBox(height: isCompactHeight ? AppSpacing.sm : AppSpacing.md),
               const MiniQirathPlayer(),
               SizedBox(height: isCompactHeight ? AppSpacing.sm : AppSpacing.md),
-              Text(
-                'QUICK ACCESS',
-                style: textTheme.manrope12SemiBold.copyWith(
-                  color: AppColors.textSecondary,
-                  letterSpacing: 1.2,
-                ),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Divider(color: AppColors.gold.withValues(alpha: 0.25)),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                    child: Text(
+                      'QUICK ACCESS',
+                      style: textTheme.manrope12SemiBold.copyWith(
+                        color: AppColors.textSecondary,
+                        letterSpacing: 1.2,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Divider(color: AppColors.gold.withValues(alpha: 0.25)),
+                  ),
+                ],
               ),
               SizedBox(height: 15.h),
               Expanded(
                 flex: 6,
-                child: Column(
+                child: Stack(
+                  alignment: Alignment.center,
                   children: <Widget>[
-                    Expanded(
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: HomeMenuTile(
-                              icon: Icons.auto_stories_rounded,
-                              label: 'Surah Index',
-                              subtitle: '114 Surahs',
-                              onTap: () => context.push('/surah-index'),
-                            ),
+                    Column(
+                      children: <Widget>[
+                        Expanded(
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: NotchedCornerClip(
+                                  corner: NotchedCorner.bottomRight,
+                                  notchRadius: hubNotchRadius,
+                                  cornerRadius: AppRadius.lg,
+                                  child: HomeMenuTile(
+                                    icon: Icons.auto_stories_rounded,
+                                    label: 'Surah Index',
+                                    subtitle: '114 Surahs',
+                                    onTap: () => context.push('/surah-index'),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: tileGap),
+                              Expanded(
+                                child: NotchedCornerClip(
+                                  corner: NotchedCorner.bottomLeft,
+                                  notchRadius: hubNotchRadius,
+                                  cornerRadius: AppRadius.lg,
+                                  child: HomeMenuTile(
+                                    icon: Icons.layers_rounded,
+                                    label: 'Juz Index',
+                                    subtitle: '30 Juz',
+                                    onTap: () => context.push('/juz-index'),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          SizedBox(width: AppSpacing.md),
-                          Expanded(
-                            child: HomeMenuTile(
-                              icon: Icons.layers_rounded,
-                              label: 'Juz Index',
-                              subtitle: '30 Juz',
-                              onTap: () => context.push('/juz-index'),
-                            ),
+                        ),
+                        SizedBox(height: tileGap),
+                        Expanded(
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: NotchedCornerClip(
+                                  corner: NotchedCorner.topRight,
+                                  notchRadius: hubNotchRadius,
+                                  cornerRadius: AppRadius.lg,
+                                  child: HomeMenuTile(
+                                    icon: Icons.headphones_rounded,
+                                    label: 'Quran Qirath',
+                                    subtitle: 'Arabic Recitations',
+                                    onTap: () => context.push('/quran-qirath'),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: tileGap),
+                              Expanded(
+                                child: NotchedCornerClip(
+                                  corner: NotchedCorner.topLeft,
+                                  notchRadius: hubNotchRadius,
+                                  cornerRadius: AppRadius.lg,
+                                  child: HomeMenuTile(
+                                    icon: Icons.bookmark_rounded,
+                                    label: 'Bookmarks',
+                                    subtitle: 'Your saved verses',
+                                    onTap: () => context.push('/bookmarked-surahs'),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: AppSpacing.md),
-                    Expanded(
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(
-                            child: HomeMenuTile(
-                              icon: Icons.headphones_rounded,
-                              label: 'Quran Qirath',
-                              subtitle: 'Arabic Recitations',
-                              onTap: () => context.push('/quran-qirath'),
-                            ),
-                          ),
-                          SizedBox(width: AppSpacing.md),
-                          Expanded(
-                            child: HomeMenuTile(
-                              icon: Icons.bookmark_rounded,
-                              label: 'Bookmarks',
-                              subtitle: 'Your saved verses',
-                              onTap: () => context.push('/bookmarked-surahs'),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    KnowledgeHubButton(diameter: hubButtonDiameter),
                   ],
                 ),
               ),

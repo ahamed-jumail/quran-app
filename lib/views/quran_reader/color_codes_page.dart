@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:pdfrx/pdfrx.dart';
 
 import '../../core/theme/app_colors.dart';
+import '../../global_widgets/islamic_star_loader.dart';
 import 'quran_asset.dart';
 
 class ColorCodesPage extends StatelessWidget {
@@ -25,7 +26,7 @@ class ColorCodesPage extends StatelessWidget {
         kQuranAssetPath,
         builder: (BuildContext context, PdfDocument? document) {
           if (document == null) {
-            return const Center(child: CircularProgressIndicator(color: AppColors.gold));
+            return const Center(child: IslamicStarLoader());
           }
           return InteractiveViewer(
             maxScale: 4,
