@@ -1,0 +1,226 @@
+{
+    "about_quran": {
+        "title": "The Quran",
+        "arabicName": "القرآن الكريم",
+        "whatIsQuran": "The Quran is the revealed word of Allah in Arabic and the central scripture of Islam. Muslims believe it was revealed to Prophet Muhammad ﷺ through the Angel Jibril, beginning in Makkah and continuing over approximately 23 years.",
+        "meaningOfQuran": "Qur'an means recitation or that which is recited.",
+        "purpose": "Guidance for humanity in faith, worship, morality, justice, repentance, patience, gratitude and accountability before Allah.",
+        "language": "Arabic",
+        "revelationPeriod": "Approximately 23 years",
+        "firstRevelation": {
+            "surah": "Al-Alaq",
+            "ayahs": "96:1-5",
+            "location": "Cave Hira near Makkah"
+        },
+        "preservation": "The Quran was memorized and written during the lifetime of Prophet Muhammad ﷺ. It was collected into a single compilation during Abu Bakr's caliphate and standardized copies were distributed during Uthman ibn Affan's caliphate."
+    },
+    "history": {
+        "firstRevelation": "Al-Alaq 96:1-5",
+        "makkanPeriod": "Early revelation emphasized tawhid, resurrection, accountability, worship, patience, moral character and lessons from earlier prophets and peoples.",
+        "hijrah": "The migration from Makkah to Madinah in 622 CE marks the beginning of the Islamic Hijri calendar.",
+        "madanianPeriod": "Madinan revelation addressed worship and community life in greater detail, including family matters, contracts, justice, charity, fasting, warfare and social responsibilities.",
+        "compilationUnderAbuBakr": "After the Battle of Yamamah and the deaths of many Quran memorizers, Abu Bakr رضي الله عنه commissioned a collection of Quranic material, led by Zayd ibn Thabit رضي الله عنه.",
+        "standardizationUnderUthman": "Uthman ibn Affan رضي الله عنه commissioned standardized copies and distributed them to major centers to reduce disputes over recitation forms.",
+        "preservationToday": "The Quran continues to be transmitted through memorization, written manuscripts, printed mushafs and established recitation traditions."
+    },
+    "statistics": {
+        "surahs": 114,
+        "juz": 30,
+        "hizb": 60,
+        "rubAlHizb": 240,
+        "verses": 6236,
+        "rukus": 558,
+        "pagesInMadinahMushaf": 604,
+        "sajdahPositionsMajority": 15,
+        "sajdahPositionsHanafi": 14,
+        "note": "Verse, word, letter and sajdah counts can vary according to counting convention, script, recitation tradition or scholarly school. 6,236 is the common Hafs/Kufan verse-count convention."
+    },
+    "importantFacts": {
+        "motherOfQuran": {
+            "name": "Al-Fatiha",
+            "arabicName": "الفاتحة",
+            "meaning": "The Opening",
+            "note": "Traditionally called Umm al-Quran, Umm al-Kitab and As-Sab al-Mathani."
+        },
+        "heartOfQuran": {
+            "name": "Ya-Sin",
+            "arabicName": "يس",
+            "note": "Popularly called the Heart of the Quran in traditional literature; this is an honorific description, not a Quranic statement."
+        },
+        "longestSurah": {
+            "name": "Al-Baqarah",
+            "arabicName": "البقرة",
+            "number": 2,
+            "numberOfAyah": 286
+        },
+        "shortestSurah": {
+            "name": "Al-Kawthar",
+            "arabicName": "الكوثر",
+            "number": 108,
+            "numberOfAyah": 3
+        },
+        "longestVerse": {
+            "reference": "Al-Baqarah 2:282",
+            "name": "Ayat al-Dayn",
+            "description": "The longest verse; it discusses recording debts and financial contracts."
+        },
+        "shortestVerse": {
+            "reference": "Commonly cited: Ar-Rahman 55:64",
+            "arabic": "مُدْهَامَّتَانِ",
+            "note": "Claims depend on whether letters, words or orthographic conventions are counted."
+        },
+        "longestWord": {
+            "arabic": "فَأَسْقَيْنَاكُمُوهُ",
+            "transliteration": "Fa-asqaynākumūhu",
+            "reference": "Al-Hijr 15:22",
+            "letters": 11,
+            "meaning": "And We gave you drink from it."
+        },
+        "mostMentionedProphet": {
+            "name": "Musa",
+            "arabicName": "موسى",
+            "approximateMentions": 136
+        },
+        "onlyMonthNamed": {
+            "name": "Ramadan",
+            "arabicName": "رَمَضَان",
+            "reference": "Al-Baqarah 2:185"
+        },
+        "mostCommonArabicLetter": {
+            "letter": "ا",
+            "name": "Alif",
+            "note": "Alif is consistently reported as the most frequent basic Arabic letter; exact counts vary by orthographic method."
+        },
+        "leastCommonArabicLetter": {
+            "letter": "ظ",
+            "name": "Ẓāʾ",
+            "note": "Common Quranic letter-frequency analyses identify Ẓāʾ as the least frequent; exact counts vary by orthographic method."
+        }
+    },
+    "revelation": {
+        "makkiSurahs": {
+            "countCommonlyUsed": 86,
+            "description": "Surahs classified as Makki were predominantly revealed before the Hijrah; individual verses may have different classifications."
+        },
+        "madaniSurahs": {
+            "countCommonlyUsed": 28,
+            "description": "Surahs classified as Madani were predominantly revealed after the Hijrah; individual verses may have different classifications."
+        },
+        "firstRevelation": {
+            "surah": "Al-Alaq",
+            "ayahs": "96:1-5"
+        },
+        "lastRevelation": {
+            "note": "Scholars differ over the final verse revealed. Al-Baqarah 2:281 is one commonly cited view."
+        },
+        "revelationInStages": true,
+        "revelationDurationYears": 23,
+        "surahsReportedAsRevealedMoreThanOnce": {
+            "status": "Disputed scholarly report",
+            "items": [
+                "Al-Fatiha",
+                "Al-Hud",
+                "Al-Isra",
+                "Al-Ikhlas"
+            ],
+            "note": "Classical works also report repeated revelation for certain verses or passages. Present this as a scholarly report, not an undisputed fact."
+        }
+    },
+    "prophets": {
+        "numberNamedInQuran": 25,
+        "names": [
+            "Adam",
+            "Idris",
+            "Nuh",
+            "Hud",
+            "Salih",
+            "Ibrahim",
+            "Lut",
+            "Ismail",
+            "Ishaq",
+            "Yaqub",
+            "Yusuf",
+            "Ayyub",
+            "Shuayb",
+            "Musa",
+            "Harun",
+            "Dhul-Kifl",
+            "Dawud",
+            "Sulayman",
+            "Ilyas",
+            "Al-Yasa",
+            "Yunus",
+            "Zakariya",
+            "Yahya",
+            "Isa",
+            "Muhammad"
+        ],
+        "mostMentioned": "Musa",
+        "surahsNamedAfterProphets": [
+            {
+                "surah": "Yunus",
+                "arabicName": "يونس",
+                "number": 10
+            },
+            {
+                "surah": "Hud",
+                "arabicName": "هود",
+                "number": 11
+            },
+            {
+                "surah": "Yusuf",
+                "arabicName": "يوسف",
+                "number": 12
+            },
+            {
+                "surah": "Ibrahim",
+                "arabicName": "إبراهيم",
+                "number": 14
+            },
+            {
+                "surah": "Muhammad",
+                "arabicName": "محمد",
+                "number": 47
+            },
+            {
+                "surah": "Nuh",
+                "arabicName": "نوح",
+                "number": 71
+            }
+        ],
+        "onlyWomanNamedExplicitly": {
+            "name": "Maryam",
+            "arabicName": "مريم",
+            "note": "Maryam is the only woman mentioned by personal name in the Quran."
+        },
+        "onlyCompanionNamedExplicitly": {
+            "name": "Zayd ibn Harithah",
+            "arabicName": "زَيْد",
+            "reference": "Al-Ahzab 33:37",
+            "note": "Zayd ibn Harithah رضي الله عنه is the companion explicitly named in the Quran."
+        }
+    },
+    "themes": {
+        "whatIsInQuran": [
+            "Tawhid and belief in Allah",
+            "Prophethood and revelation",
+            "Stories of prophets and earlier nations",
+            "The Hereafter, Paradise and Hell",
+            "Worship and spiritual purification",
+            "Prayer, fasting, charity and pilgrimage",
+            "Family and marriage",
+            "Justice and social responsibility",
+            "Law, contracts and financial ethics",
+            "Repentance, forgiveness and mercy",
+            "Patience, gratitude and reliance upon Allah",
+            "Character and moral conduct",
+            "Guidance for individual and community life",
+            "Signs of Allah in creation",
+            "Lessons from history"
+        ],
+        "beautyOfQuran": {
+            "description": "The beauty of the Quran is experienced through its language, rhythm, imagery, structure, depth of meaning, moral guidance, spiritual impact and recitation.",
+            "note": "Beauty is devotional and literary rather than a measurable statistic."
+        }
+    }
+}

@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                         state.lastPage > QuranProgressState.firstReadablePage &&
                         state.totalPages > 0;
                     return QuranProgressCard(
-                      title: 'Continue your journey',
+                      title: hasProgress ? 'Resume Quran' : 'Read Quran',
                       subtitle: hasProgress
                           ? 'Page ${state.lastPage} of ${state.totalPages}'
                           : 'Begin reading the Holy Quran',

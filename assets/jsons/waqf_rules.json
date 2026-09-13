@@ -1,0 +1,137 @@
+{
+    "title": "Quran Waqf and Stop Signs",
+    "arabicTitle": "علامات الوقف والابتداء",
+    "intro": "Waqf means stopping or pausing during Quran recitation. Mushaf symbols guide the reciter toward stops and continuations that preserve meaning. Exact symbols and conventions differ between mushaf traditions.",
+    "importantNote": "These are reading aids, not a substitute for learning Tajweed and Waqf/Ibtida from a qualified teacher. Do not describe every symbol as an absolute legal obligation; schools and mushaf traditions use different terminology and degrees of recommendation.",
+    "rules": [
+        {
+            "symbol": "م",
+            "arabicName": "وقف لازم",
+            "name": "Waqf Lazim",
+            "meaning": "Necessary / compulsory stop",
+            "action": "Stop.",
+            "simpleExplanation": "Continuing can connect the wording in a way that harms or changes the intended meaning in the common Madinah convention.",
+            "breath": "Take a breath after stopping if needed."
+        },
+        {
+            "symbol": "ط",
+            "arabicName": "وقف مطلق",
+            "name": "Waqf Mutlaq",
+            "meaning": "Complete stop",
+            "action": "Stopping is preferred.",
+            "simpleExplanation": "The meaning is considered complete here. Common in some Indo-Pak/Sajawandi mushafs.",
+            "breath": "You may stop and breathe."
+        },
+        {
+            "symbol": "ع",
+            "arabicName": "علامة الركوع",
+            "name": "Ruku sign",
+            "meaning": "Thematic section / ruku marker",
+            "action": "Often a natural stopping point.",
+            "simpleExplanation": "In Indo-Pak mushafs, ع commonly marks the end of a ruku or thematic section. It is not one of the core Madinah mushaf waqf symbols and is not an absolute stop command."
+        },
+        {
+            "symbol": "ج",
+            "arabicName": "وقف جائز",
+            "name": "Waqf Jaiz",
+            "meaning": "Permissible stop",
+            "action": "Stop or continue.",
+            "simpleExplanation": "Both stopping and continuing are acceptable."
+        },
+        {
+            "symbol": "صلى",
+            "arabicName": "الوصل أولى",
+            "name": "Wasl Awla",
+            "meaning": "Continuation is preferable",
+            "action": "Continue if possible.",
+            "simpleExplanation": "Stopping is allowed, but continuing is considered better."
+        },
+        {
+            "symbol": "قلى",
+            "arabicName": "الوقف أولى",
+            "name": "Waqf Awla",
+            "meaning": "Stopping is preferable",
+            "action": "Stop if possible.",
+            "simpleExplanation": "Both options are permitted, but stopping is considered better."
+        },
+        {
+            "symbol": "لا",
+            "arabicName": "لا وقف",
+            "name": "La",
+            "meaning": "Do not stop",
+            "action": "Continue.",
+            "simpleExplanation": "Avoid stopping because the phrase is incomplete or meaning can be distorted by stopping."
+        },
+        {
+            "symbol": "قف",
+            "arabicName": "قف",
+            "name": "Qif",
+            "meaning": "Stop",
+            "action": "Stop.",
+            "simpleExplanation": "A stop is indicated in mushafs that use the Qif convention."
+        },
+        {
+            "symbol": "ق",
+            "arabicName": "قيل عليه الوقف",
+            "name": "Qeela Alayhil-Waqf",
+            "meaning": "Stopping has been suggested",
+            "action": "Continuation is generally preferred.",
+            "simpleExplanation": "Some reciters regard it as a possible stopping point, but continuing is generally stronger in this convention."
+        },
+        {
+            "symbol": "ز",
+            "arabicName": "وقف مجوز",
+            "name": "Waqf Mujawwaz",
+            "meaning": "Permitted stop, continuation preferred",
+            "action": "Continue if possible.",
+            "simpleExplanation": "Stopping is permitted, but continuing is preferable."
+        },
+        {
+            "symbol": "ص",
+            "arabicName": "وقف مرخص",
+            "name": "Waqf Murakhkhas",
+            "meaning": "Licensed stop",
+            "action": "Continue normally; stop if breath requires it.",
+            "simpleExplanation": "A long sentence may permit a breath stop here when necessary."
+        },
+        {
+            "symbol": "س",
+            "arabicName": "سكتة",
+            "name": "Saktah",
+            "meaning": "Brief pause without breath",
+            "action": "Pause briefly, without taking a new breath, then continue.",
+            "simpleExplanation": "Saktah is not a full waqf; the breath is maintained."
+        },
+        {
+            "symbol": "∴ ∴",
+            "arabicName": "وقف المعانقة",
+            "name": "Waqf Mu'anaqah",
+            "meaning": "Paired / embrace stop",
+            "action": "Stop at one of the two paired locations, not both.",
+            "simpleExplanation": "Choose one stopping location. Do not stop at both paired marks."
+        }
+    ],
+    "commonBeginnerRules": [
+        {
+            "rule": "Avoid stopping at a marked لا location.",
+            "reason": "The phrase may be incomplete and the meaning can be distorted."
+        },
+        {
+            "rule": "When stopping on a word, the final short vowel is generally dropped.",
+            "reason": "Waqf changes the ending pronunciation according to Tajweed rules."
+        },
+        {
+            "rule": "Do not restart from an isolated word or phrase if it produces an incomplete or misleading meaning.",
+            "reason": "Waqf and Ibtida covers both where to stop and where to restart."
+        },
+        {
+            "rule": "A verse-end is generally a recognized stopping place.",
+            "reason": "The end of an ayah is a natural structural boundary, though the appropriate restart still matters."
+        },
+        {
+            "rule": "If breath runs out at a poor stopping point, return to an appropriate earlier point before continuing.",
+            "reason": "Meaning-aware recitation is more important than forcing a breathless continuation."
+        }
+    ],
+    "mushafVariation": "The Madinah Mushaf commonly uses م, لا, ج, صلى, قلى, paired dots and س. Indo-Pak/Sajawandi editions may additionally use signs such as ط, ز, ص, ق, قف and ع."
+}
