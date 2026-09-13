@@ -162,7 +162,7 @@ class _AboutQuranBody extends StatelessWidget {
               SizedBox(height: AppSpacing.sm),
               EqualWidthGrid(
                 itemCount: details.surahsNamedAfterProphets.length,
-                columns: 4,
+                columns: 2,
                 spacing: AppSpacing.xs,
                 runSpacing: AppSpacing.xs,
                 itemBuilder: (BuildContext context, int index) =>

@@ -8,6 +8,7 @@ import '../../core/bloc/quran_progress/quran_progress_state.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
+import '../../global_widgets/gold_shimmer_text.dart';
 import '../../models/quran_reader_route_args.dart';
 import 'widgets/home_menu_tile.dart';
 import 'widgets/knowledge_hub_button.dart';
@@ -85,7 +86,7 @@ class HomePage extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
                     child: Text(
-                      'QUICK ACCESS',
+                      'EXPLORE',
                       style: textTheme.manrope12SemiBold.copyWith(
                         color: AppColors.textSecondary,
                         letterSpacing: 1.2,
@@ -186,69 +187,6 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _GoldShimmerText extends StatefulWidget {
-  const _GoldShimmerText({required this.text, required this.style});
-
-  final String text;
-  final TextStyle style;
-
-  @override
-  State<_GoldShimmerText> createState() => _GoldShimmerTextState();
-}
-
-class _GoldShimmerTextState extends State<_GoldShimmerText>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 2600),
-    )..repeat();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final Text text = Text(
-      widget.text,
-      maxLines: 1,
-      softWrap: false,
-      textAlign: TextAlign.center,
-      style: widget.style.copyWith(color: Colors.white),
-    );
-
-    return AnimatedBuilder(
-      animation: _controller,
-      child: text,
-      builder: (BuildContext context, Widget? child) {
-        final double dx = -1.6 + _controller.value * 3.2;
-        return ShaderMask(
-          blendMode: BlendMode.srcIn,
-          shaderCallback: (Rect bounds) => LinearGradient(
-            colors: const <Color>[
-              AppColors.gold,
-              AppColors.goldLight,
-              AppColors.gold,
-            ],
-            stops: const <double>[0.0, 0.5, 1.0],
-            begin: Alignment(dx - 0.7, 0),
-            end: Alignment(dx + 0.7, 0),
-          ).createShader(bounds),
-          child: child,
-        );
-      },
-    );
-  }
-}
-
 class _HomeHeader extends StatelessWidget {
   const _HomeHeader({required this.textTheme, required this.isCompactHeight});
 
@@ -316,7 +254,7 @@ class _HomeHeader extends StatelessWidget {
                   width: double.infinity,
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
-                    child: _GoldShimmerText(
+                    child: GoldShimmerText(
                       text: 'Your Quran Companion',
                       style: textTheme.fraunces22SemiBold.copyWith(height: 1.1),
                     ),

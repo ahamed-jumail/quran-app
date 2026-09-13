@@ -79,24 +79,66 @@ class NamesOfAllahPage extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: GridView.builder(
-                  padding: EdgeInsets.all(AppSpacing.lg),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: AppSpacing.sm,
-                    crossAxisSpacing: AppSpacing.sm,
-                    childAspectRatio: 0.82,
-                  ),
-                  itemCount: names.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return _NameOfAllahCard(name: names[index]);
-                  },
-                ),
+                child: _NamesGrid(names: names),
               ),
             ],
           );
         },
       ),
+    );
+  }
+}
+
+/// A 2-column grid of name cards, with a lone trailing item (99 is odd, so
+/// the 99th never pairs up) stretched across the full row width instead of
+/// sitting alone at half-width with an empty gap beside it.
+class _NamesGrid extends StatelessWidget {
+  const _NamesGrid({required this.names});
+
+  final List<NameOfAllah> names;
+
+  static const int _crossAxisCount = 2;
+  static const double _childAspectRatio = 0.82;
+
+  @override
+  Widget build(BuildContext context) {
+    final bool hasLoneTrailingItem = names.length.isOdd;
+    final int gridCount = hasLoneTrailingItem ? names.length - 1 : names.length;
+
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverPadding(
+          padding: EdgeInsets.all(AppSpacing.lg),
+          sliver: SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: _crossAxisCount,
+              mainAxisSpacing: AppSpacing.sm,
+              crossAxisSpacing: AppSpacing.sm,
+              childAspectRatio: _childAspectRatio,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) => _NameOfAllahCard(name: names[index]),
+              childCount: gridCount,
+            ),
+          ),
+        ),
+        if (hasLoneTrailingItem)
+          SliverPadding(
+            padding: EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.lg),
+            sliver: SliverToBoxAdapter(
+              child: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  final double cellWidth =
+                      (constraints.maxWidth - AppSpacing.sm) / _crossAxisCount;
+                  return SizedBox(
+                    height: cellWidth / _childAspectRatio,
+                    child: _NameOfAllahCard(name: names.last),
+                  );
+                },
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

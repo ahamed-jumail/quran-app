@@ -129,12 +129,21 @@ class _EmptyState extends StatelessWidget {
           ],
         ),
         SizedBox(height: 12.h),
-        Text(
-          'QUICK START',
-          style: textTheme.manrope10SemiBold.copyWith(
-            color: AppColors.gold.withValues(alpha: 0.85),
-            letterSpacing: 1.1,
-          ),
+        Row(
+          children: <Widget>[
+            Expanded(child: Divider(color: AppColors.gold.withValues(alpha: 0.25))),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+              child: Text(
+                'LISTEN INSTANTLY',
+                style: textTheme.manrope10SemiBold.copyWith(
+                  color: AppColors.gold.withValues(alpha: 0.85),
+                  letterSpacing: 1.1,
+                ),
+              ),
+            ),
+            Expanded(child: Divider(color: AppColors.gold.withValues(alpha: 0.25))),
+          ],
         ),
         SizedBox(height: 8.h),
         Row(
