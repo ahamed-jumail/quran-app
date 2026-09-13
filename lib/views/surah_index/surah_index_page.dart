@@ -203,7 +203,12 @@ class _SearchField extends StatelessWidget {
                 ),
         ),
         onTapOutside: (PointerDownEvent event) {
-          FocusScope.of(context).unfocus();
+          // A plain unfocus() leaves this field remembered as the scope's
+          // "focused child", so it silently regains focus (and reopens the
+          // keyboard) when this route becomes active again after a push/pop
+          // (e.g. visiting Surah Info and coming back). Requesting focus on
+          // a throwaway node instead clears that memory for good.
+          FocusScope.of(context).requestFocus(FocusNode());
         },
       ),
     );

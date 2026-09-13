@@ -48,6 +48,7 @@ dependencies:
   web_socket_channel: ^3.0.1
   equatable: ^2.0.5
   pdfrx: ^2.6.1
+  quran_audio: ^1.0.0
   network_flutter:
     path: mobile_api_client
   
@@ -56,11 +57,19 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.3
 
 flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/icons/quran_app_icon.png"
+
+flutter_native_splash:
+  color: "#0E1613"
+  image: "assets/icons/quran.png"
+  android_12:
+    color: "#0E1613"
+    image: "assets/icons/quran.png"
 
 dependency_overrides:
   win32: ^5.5.4
@@ -88,6 +97,9 @@ flutter:
     - assets/pdfs/tajweed_quran.pdf
     - assets/jsons/surah_index.json
     - assets/jsons/juz_index.json
+    - assets/jsons/quran_details.json
+    - assets/jsons/waqf_rules.json
+    - assets/jsons/names_of_allah.json
     - assets/icons/quran_app_icon.png
     - assets/icons/quran.png
 

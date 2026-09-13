@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches AppColors.surfaceBase, so the native launch window blends
+         straight into the Flutter splash screen instead of flashing white. -->
+    <color name="launch_background">#FF0E1613</color>
+</resources>
