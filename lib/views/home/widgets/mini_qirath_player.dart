@@ -66,45 +66,133 @@ class MiniQirathPlayer extends StatelessWidget {
   }
 }
 
+/// A popular Surah offered as a one-tap "quick start" in the empty state.
+class _QuickStartSurah {
+  const _QuickStartSurah(this.number, this.name);
+
+  final int number;
+  final String name;
+}
+
+const List<_QuickStartSurah> _kQuickStartSurahs = <_QuickStartSurah>[
+  _QuickStartSurah(1, 'Al-Fatiha'),
+  _QuickStartSurah(36, 'Yaseen'),
+  _QuickStartSurah(67, 'Al-Mulk'),
+];
+
+/// Shown before qirath has ever been played. Matches [_NowPlayingContent]'s
+/// height (header row, then a second row) so the card doesn't jump in size
+/// the moment playback starts — the extra room holds one-tap shortcuts for
+/// a few popular Surahs instead of sitting empty.
 class _EmptyState extends StatelessWidget {
   const _EmptyState();
 
   @override
   Widget build(BuildContext context) {
     final TextTheme textTheme = Theme.of(context).textTheme;
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        const _ArtworkBadge(isPlaying: false),
-        SizedBox(width: AppSpacing.md),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        Row(
+          children: <Widget>[
+            const _ArtworkBadge(isPlaying: false),
+            SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    'Quran Qirath',
+                    style: textTheme.fraunces16SemiBold.copyWith(
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                  SizedBox(height: 2.h),
+                  Text(
+                    'Tap to start listening to a recitation',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.manrope12Regular.copyWith(
+                      color: AppColors.textSecondary.withValues(alpha: 0.75),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Icon(
+              Icons.chevron_right_rounded,
+              color: AppColors.textSecondary.withValues(alpha: 0.5),
+              size: 22.r,
+            ),
+          ],
+        ),
+        SizedBox(height: 12.h),
+        Text(
+          'QUICK START',
+          style: textTheme.manrope10SemiBold.copyWith(
+            color: AppColors.gold.withValues(alpha: 0.85),
+            letterSpacing: 1.1,
+          ),
+        ),
+        SizedBox(height: 8.h),
+        Row(
+          children: <Widget>[
+            for (int i = 0; i < _kQuickStartSurahs.length; i++) ...<Widget>[
+              if (i > 0) SizedBox(width: AppSpacing.sm),
+              Expanded(child: _QuickStartChip(surah: _kQuickStartSurahs[i])),
+            ],
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _QuickStartChip extends StatelessWidget {
+  const _QuickStartChip({required this.surah});
+
+  final _QuickStartSurah surah;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextTheme textTheme = Theme.of(context).textTheme;
+    return Material(
+      color: AppColors.transparent,
+      borderRadius: BorderRadius.circular(AppRadius.pill),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+        onTap: () => context.read<QiraathCubit>().playSurah(surah.number),
+        child: Container(
+          height: 46.r,
+          padding: EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: AppColors.surfaceOverlay,
+            borderRadius: BorderRadius.circular(AppRadius.pill),
+            border: Border.all(color: AppColors.gold.withValues(alpha: 0.3)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(
-                'Quran Qirath',
-                style: textTheme.fraunces16SemiBold.copyWith(
-                  color: AppColors.textPrimary,
-                ),
-              ),
-              SizedBox(height: 2.h),
-              Text(
-                'Tap to start listening to a recitation',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: textTheme.manrope12Regular.copyWith(
-                  color: AppColors.textSecondary.withValues(alpha: 0.75),
+              Icon(Icons.play_arrow_rounded, color: AppColors.gold, size: 15.r),
+              SizedBox(width: 2.w),
+              Flexible(
+                child: Text(
+                  surah.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: textTheme.manrope12SemiBold.copyWith(
+                    color: AppColors.textPrimary,
+                  ),
                 ),
               ),
             ],
           ),
         ),
-        Icon(
-          Icons.chevron_right_rounded,
-          color: AppColors.textSecondary.withValues(alpha: 0.5),
-          size: 22.r,
-        ),
-      ],
+      ),
     );
   }
 }
