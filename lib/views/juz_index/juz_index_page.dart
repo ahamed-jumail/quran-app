@@ -6,6 +6,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
 import '../../models/juz_index_entry.dart';
+import '../../models/quran_reader_route_args.dart';
 import 'juz_repository.dart';
 import 'widgets/juz_tile.dart';
 
@@ -97,7 +98,10 @@ class _JuzIndexPageState extends State<JuzIndexPage> {
                       final JuzIndexEntry entry = filtered[index];
                       return JuzTile(
                         entry: entry,
-                        onTap: () => context.push('/quran-reader', extra: entry.startPage),
+                        onTap: () => context.push(
+                          '/quran-reader',
+                          extra: QuranReaderRouteArgs(initialPage: entry.startPage),
+                        ),
                       );
                     },
                   );

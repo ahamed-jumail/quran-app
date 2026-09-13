@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'core/bloc/surah_interactions/surah_interactions_state.dart';
+import 'models/quran_reader_route_args.dart';
 import 'models/surah_index_entry.dart';
 import 'views/home/home_page.dart';
 import 'views/juz_index/juz_index_page.dart';
@@ -49,10 +50,15 @@ class GoRouterInit {
       GoRoute(
         path: '/quran-reader',
         name: RouteConstants.quranReaderPage,
-        pageBuilder: (BuildContext context, GoRouterState state) =>
-            MaterialPage<QuranReaderPage>(
-          child: QuranReaderPage(initialPage: state.extra as int?),
-        ),
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          final QuranReaderRouteArgs? args = state.extra as QuranReaderRouteArgs?;
+          return MaterialPage<QuranReaderPage>(
+            child: QuranReaderPage(
+              initialPage: args?.initialPage,
+              updateProgress: args?.updateProgress ?? false,
+            ),
+          );
+        },
       ),
       GoRoute(
         path: '/color-codes',

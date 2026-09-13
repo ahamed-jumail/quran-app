@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
+import '../../models/quran_reader_route_args.dart';
 import '../../models/surah_index_entry.dart';
 
 class SurahInfoPage extends StatelessWidget {
@@ -141,7 +142,10 @@ class SurahInfoPage extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: FilledButton.icon(
-                onPressed: () => context.push('/quran-reader', extra: entry.startPage),
+                onPressed: () => context.push(
+                  '/quran-reader',
+                  extra: QuranReaderRouteArgs(initialPage: entry.startPage),
+                ),
                 icon: const Icon(Icons.menu_book_rounded),
                 label: const Text('Read this Surah'),
               ),

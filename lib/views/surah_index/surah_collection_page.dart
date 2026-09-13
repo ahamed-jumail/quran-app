@@ -7,6 +7,7 @@ import '../../core/bloc/surah_interactions/surah_interactions_state.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
+import '../../models/quran_reader_route_args.dart';
 import '../../models/surah_index_entry.dart';
 import 'surah_repository.dart';
 import 'widgets/surah_tile.dart';
@@ -74,7 +75,10 @@ class SurahCollectionPage extends StatelessWidget {
                     final SurahIndexEntry entry = filtered[index];
                     return SurahTile(
                       entry: entry,
-                      onTap: () => context.push('/quran-reader', extra: entry.startPage),
+                      onTap: () => context.push(
+                        '/quran-reader',
+                        extra: QuranReaderRouteArgs(initialPage: entry.startPage),
+                      ),
                     );
                   },
                 );

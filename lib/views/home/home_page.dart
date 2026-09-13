@@ -8,6 +8,7 @@ import '../../core/bloc/quran_progress/quran_progress_state.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_dimensions.dart';
 import '../../core/theme/app_styles.dart';
+import '../../models/quran_reader_route_args.dart';
 import 'widgets/home_menu_tile.dart';
 import 'widgets/quran_progress_card.dart';
 
@@ -52,8 +53,13 @@ class HomePage extends StatelessWidget {
                           ? 'Page ${state.lastPage} of ${state.totalPages}'
                           : 'Begin reading the Holy Quran',
                       progress: state.progress,
-                      progressLabel: hasProgress ? '${(state.progress * 100).round()}%' : 'Begin',
-                      onTap: () => context.push('/quran-reader'),
+                      progressLabel: hasProgress
+                          ? '${(state.progress * 100).round()}%'
+                          : 'Begin',
+                      onTap: () => context.push(
+                        '/quran-reader',
+                        extra: const QuranReaderRouteArgs(updateProgress: true),
+                      ),
                     );
                   },
                 ),
@@ -101,8 +107,8 @@ class HomePage extends StatelessWidget {
                           Expanded(
                             child: HomeMenuTile(
                               icon: Icons.headphones_rounded,
-                              label: 'Quran Audio',
-                              subtitle: 'Audio Recitations',
+                              label: 'Quran Qirath',
+                              subtitle: 'Arabic Recitations',
                               onTap: () {},
                             ),
                           ),
@@ -127,45 +133,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
-
-Path _mosqueArchPath(Rect rect, {bool closeBottom = true}) {
-  final double springY = rect.top + rect.height * 0.36;
-  final double apexX = rect.center.dx;
-
-  final Path path = Path()..moveTo(rect.left, rect.bottom);
-  path.lineTo(rect.left, springY);
-  path.cubicTo(
-    rect.left,
-    springY - rect.height * 0.30,
-    apexX - rect.width * 0.22,
-    rect.top + rect.height * 0.05,
-    apexX,
-    rect.top,
-  );
-  path.cubicTo(
-    apexX + rect.width * 0.22,
-    rect.top + rect.height * 0.05,
-    rect.right,
-    springY - rect.height * 0.30,
-    rect.right,
-    springY,
-  );
-  path.lineTo(rect.right, rect.bottom);
-  if (closeBottom) {
-    path.close();
-  }
-  return path;
-}
-
-class _ArchClipper extends CustomClipper<Path> {
-  const _ArchClipper();
-
-  @override
-  Path getClip(Size size) => _mosqueArchPath(Offset.zero & size);
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => false;
 }
 
 class _GoldShimmerText extends StatefulWidget {
@@ -268,19 +235,7 @@ class _HomeHeader extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          ClipPath(
-            clipper: const _ArchClipper(),
-            child: Container(
-              height: 38.r,
-              width: 38.r,
-              color: AppColors.emerald.withValues(alpha: 0.72),
-              child: Icon(
-                Icons.menu_book_rounded,
-                color: AppColors.gold,
-                size: 18.r,
-              ),
-            ),
-          ),
+          Image.asset('assets/icons/quran.png', height: 50.r, width: 50.r),
           SizedBox(width: AppSpacing.sm),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -328,31 +283,6 @@ class _HomeHeader extends StatelessWidget {
             style: textTheme.manrope10Regular.copyWith(
               color: AppColors.textSecondary.withValues(alpha: 0.72),
               fontSize: 11.sp,
-            ),
-          ),
-          SizedBox(height: isCompactHeight ? 7.h : 9.h),
-          Center(
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Container(
-                  height: 1,
-                  width: 20.r,
-                  color: AppColors.gold.withValues(alpha: 0.16),
-                ),
-                SizedBox(width: 6.r),
-                Icon(
-                  Icons.auto_awesome_rounded,
-                  color: AppColors.gold.withValues(alpha: 0.4),
-                  size: 11.r,
-                ),
-                SizedBox(width: 6.r),
-                Container(
-                  height: 1,
-                  width: 20.r,
-                  color: AppColors.gold.withValues(alpha: 0.16),
-                ),
-              ],
             ),
           ),
         ],

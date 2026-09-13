@@ -89,6 +89,7 @@ flutter:
     - assets/jsons/surah_index.json
     - assets/jsons/juz_index.json
     - assets/icons/quran_app_icon.png
+    - assets/icons/quran.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

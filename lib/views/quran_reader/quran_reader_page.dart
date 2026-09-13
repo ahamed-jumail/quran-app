@@ -51,12 +51,21 @@ Matrix4 _clampToFirstReadablePage(
 }
 
 class QuranReaderPage extends StatefulWidget {
-  const QuranReaderPage({super.key, this.initialPage});
+  const QuranReaderPage({
+    super.key,
+    this.initialPage,
+    this.updateProgress = false,
+  });
 
   /// Jumps straight to this page (e.g. a Surah's starting page) instead of
-  /// resuming from the last saved reading position. Once the user reads on
-  /// from there, that becomes their new saved progress as usual.
+  /// resuming from the last saved reading position.
   final int? initialPage;
+
+  /// Whether reading here should update the user's saved progress. Only true
+  /// when opened from "Continue your journey" on Home — jumping in from a
+  /// Surah/Juz index or Info page to look something up shouldn't silently
+  /// overwrite where the user actually left off.
+  final bool updateProgress;
 
   @override
   State<QuranReaderPage> createState() => _QuranReaderPageState();
@@ -143,7 +152,7 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
   }
 
   void _onPageChanged(int? pageNumber) {
-    if (pageNumber == null) {
+    if (pageNumber == null || !widget.updateProgress) {
       return;
     }
     _saveDebounce?.cancel();
@@ -163,6 +172,9 @@ class _QuranReaderPageState extends State<QuranReaderPage> {
   }
 
   void _flushFinalProgress() {
+    if (!widget.updateProgress) {
+      return;
+    }
     try {
       final int? finalPage = _controller.pageNumber;
       if (finalPage != null && _controller.isReady) {
